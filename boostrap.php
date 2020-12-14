@@ -1,5 +1,5 @@
 <?php 
     include 'config/parameters.php';
-    include 'config/database.php';
-    include 'scripts/function.php'; 
+    include 'src/scripts/database.php';
+    include 'src/scripts/function.php'; 
 ?>

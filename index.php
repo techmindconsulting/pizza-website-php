@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <?php include 'includes/shared/head.php'; ?>
+        <?php include 'src/includes/shared/head.php'; ?>
     </head>
     <body>
         <!-- Header : Menu + baniere -->
         <header id="header" class="header">
             <?php 
                 $currentPage = 'homepage';
-                include 'includes/shared/menu.php'; 
+                include 'src/includes/shared/menu.php'; 
             ?>
             <div class="banner">
                 <h2>Pizza Billy</h2>
@@ -24,13 +24,13 @@
             </div>
         </header>
         <!-- Service -->
-        <?php include 'includes/section/service.html'; ?>
+        <?php include 'src/includes/section/service.html'; ?>
         <!-- Localisation -->
-        <?php include 'includes/section/map.php'; ?>
+        <?php include 'src/includes/section/map.php'; ?>
         <!-- Contact -->
-        <?php include 'includes/section/form_contact.php' ?>
+        <?php include 'src/includes/section/form_contact.php' ?>
         <!-- Footer -->
-        <?php include 'includes/shared/footer.php'; ?>
-        <?php include 'includes/shared/button_whatsapp.php'; ?>
+        <?php include 'src/includes/shared/footer.php'; ?>
+        <?php include 'src/includes/shared/button_whatsapp.php'; ?>
     </body>
 </html>
