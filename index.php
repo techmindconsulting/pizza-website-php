@@ -23,14 +23,12 @@
                 href="<?= WHATSAPP_API . '?phone='. WHATSAPP_API_PARAM_PHONE . '&text='. WHATSAPP_API_PARAM_MESSAGE ?>">Commander</a>
             </div>
         </header>
-
         <!-- Service -->
         <?php include 'includes/section/service.html'; ?>
         <!-- Localisation -->
         <?php include 'includes/section/map.php'; ?>
         <!-- Contact -->
         <?php include 'includes/section/form_contact.php' ?>
-
         <!-- Footer -->
         <?php include 'includes/shared/footer.php'; ?>
         <?php include 'includes/shared/button_whatsapp.php'; ?>
