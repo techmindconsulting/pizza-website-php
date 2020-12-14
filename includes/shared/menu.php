@@ -8,8 +8,8 @@
                         class="active" 
                 <?php } ?> 
                      >Service</a></li>
-                <li><a href="#localisation">Plan d'accès</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.php#localisation">Plan d'accès</a></li>
+                <li><a href="index.php#contact">Contact</a></li>
                 <li><a href="carte.php" 
                 <?php 
                     if ($currentPage === 'contact') { ?> 
@@ -30,9 +30,9 @@
     <nav id="menu-responsive" class="menu-responsive">
         <a class="close" href="#close"><i class="fas fa-times"></i></a>
         <ul>
-            <li><a href="#service">Service</a></li>
-            <li><a href="#localisation">Plan</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.php#service">Service</a></li>
+            <li><a href="index.php#localisation">Plan</a></li>
+            <li><a href="index.php#contact">Contact</a></li>
             <li><a href="carte.php">La carte</a></li>
         </ul>
     </nav>
