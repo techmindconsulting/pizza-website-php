@@ -9,32 +9,34 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 └── pizza-website-php/
     ├── assets/
     │   ├── css
-    │   ├── doc 
+    │   ├── doc
     │   ├── images
     │   └── pdf
     ├── config/
     │   ├── database.php
     │   └── parameters.php
-    ├── includes/
-    │   ├── section/
-    │   │   ├── form_contact.php
-    │   │   ├── map.php
-    │   │   ├── product.php
-    │   │   ├── product_type.php
-    │   │   └── service.html
-    │   └── shared/
-    │       ├── button_whatsapp.php
-    │       ├── footer.php
-    │       ├── head.php
-    │       └── menu.php
-    ├── scripts/
-    │   ├── function.php
-    │   └── send_email.php
+    ├── src/
+    │   ├── includes/
+    │   │   ├── section/
+    │   │   │   ├── form_contact.php
+    │   │   │   ├── map.php
+    │   │   │   ├── product.php
+    │   │   │   ├── product_type.php
+    │   │   │   └── service.html
+    │   │   └── shared/
+    │   │       ├── button_whatsapp.php
+    │   │       ├── footer.php
+    │   │       ├── head.php
+    │   │       └── menu.php
+    │   └── scripts/
+    │       ├── function.php
+    │       └── send_email.php
     ├── sql/
     │   └── db.sql
     ├── bootstrap.php
     ├── carte.php
     └── index.php
+    
 ``` 
 
 ## 2. Description 
@@ -43,11 +45,11 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 
 - [config] : Fichiers utiles à la configuration du projet
 
-- [includes] : Les portions de pages séparé en 2 catégories.
+- [src/includes] : Les portions de pages séparé en 2 catégories.
     - [shared] Commune à toute les pages
     - [section] Portions de page plus spécifique
 
-- [scripts] :  Traitement métiers appélé par les portions de page
+- [src/scripts] :  Traitement métiers appélé par les portions de page
 
 - [sql] : Base de données SQL
 
@@ -56,3 +58,5 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 - carte.php : Page affichant la liste des produits et type de produits
 
 - index.php : Page d'acceuil
+- maintenance.php : Page de maintenance Erreur 500
+- page_introuvable.php : Page introuvable Erreur 404
