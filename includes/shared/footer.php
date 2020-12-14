@@ -15,7 +15,10 @@
         <div>
             <h3>Pizzeria</h3>
             <p>Ouvert tous les jours</p>
-            <p><time datetime="17:30">17h30</time> à <time datetime="22:30">22h30</time></p>
+            <p>
+                <time datetime="<?= CONTACT_OPENING_HOURS['datetime'] ?>"><?= CONTACT_OPENING_HOURS['display_as'] ?></time> à 
+                <time datetime="<?= CONTACT_CLOSING_HOURS['datetime'] ?>"><?= CONTACT_CLOSING_HOURS['display_as'] ?></time>
+            </p>
             <p><?= CONTACT_ADDRESS ?></p>
             <address><?php CONTACT_PHONE ?></address>
         </div>

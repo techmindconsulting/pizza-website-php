@@ -10,7 +10,6 @@ if ($isValid) {
     $_POST['phone'], 
     $_POST['message']);
 
-
     if ($hasSent) {
         header('Location:../index.php?sent=ok#contact');
         die;

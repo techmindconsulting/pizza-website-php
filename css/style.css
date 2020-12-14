@@ -265,7 +265,15 @@ h2 +  p.alert-error {
     border: 1px solid lightgrey;
     padding: 1rem;
     flex: 0 0 250px; /* raccourci de flex-grow flex-shrink et flex-basis */
+    box-shadow: none;
 }
+
+.service div.product:hover {
+    cursor: pointer;
+    background-color: lightgray;
+    color: black !important; 
+}
+
 .service .icon {
     padding-top: 2rem;
     font-size: 2rem;

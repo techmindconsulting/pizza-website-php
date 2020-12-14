@@ -1,6 +1,11 @@
 <?php 
 
-function getProductTypes()
+/**
+ * getProductTypes
+ *
+ * @return array
+ */
+function getProductTypes() : array
 {
     global $connexion;
 
@@ -11,8 +16,13 @@ function getProductTypes()
     return $statement->fetchAll();
 }
 
-
-function hasValidEmail($email) 
+/**
+ * hasValidEmail
+ *
+ * @param  string $email
+ * @return bool
+ */
+function hasValidEmail(string $email) : bool
 {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return true;
@@ -21,7 +31,14 @@ function hasValidEmail($email)
       }
 }
 
-function isValidForm($postDatas)
+
+/**
+ * isValidForm
+ *
+ * @param  array $postDatas
+ * @return bool
+ */
+function isValidForm(array $postDatas) : bool
 {
     if (empty($postDatas)) {
         return false;
@@ -36,7 +53,18 @@ function isValidForm($postDatas)
     return true;
 }
 
-function sendEmail($firstname, $lastname, $email, $phone, $message)
+
+/**
+ * sendEmail
+ *
+ * @param  string $firstname
+ * @param  string $lastname
+ * @param  string $email
+ * @param  string $phone
+ * @param  string $message
+ * @return bool
+ */
+function sendEmail(string $firstname, string $lastname, string $email, string $phone, string $message) : bool
 {
     include '../config/parameters.php';
     $fullname = $firstname. ' '. $lastname;
