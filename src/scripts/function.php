@@ -16,10 +16,10 @@ function getProductTypes() : array
     return $statement->fetchAll();
 }
 
-
 /**
- * getProductTypes
+ * getProducts
  *
+ * @param  int $productId
  * @return array
  */
 function getProducts(int $productId) : array
@@ -49,7 +49,6 @@ function hasValidEmail(string $email) : bool
       }
 }
 
-
 /**
  * isValidForm
  *
@@ -70,7 +69,6 @@ function isValidForm(array $postDatas) : bool
 
     return true;
 }
-
 
 /**
  * sendEmail
