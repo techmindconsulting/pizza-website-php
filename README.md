@@ -13,7 +13,6 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     │   ├── images
     │   └── pdf
     ├── config/
-    │   ├── database.php
     │   └── parameters.php
     ├── src/
     │   ├── includes/
@@ -30,6 +29,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     │   │       └── menu.php
     │   └── scripts/
     │       ├── function.php
+    │       ├── database.php
     │       └── send_email.php
     ├── sql/
     │   └── db.sql
