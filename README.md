@@ -74,7 +74,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
   
   Documentation : https://www.php.net/manual/fr/function.include.php
 
-### Constantes
+#### Constantes
   * Faire appel à un fichier de configuration pour des paramètres qui changent peu ou pas (Ex: Accès à la base de données)
   Il est donc possible de stocker ces données dans des constantes.  
   La portée d'une constante est globale. Les constantes peuvent être accédé depuis partout dans un script sans tenir compte de la portée. 
@@ -90,4 +90,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
   ``` 
   
-Documentation : https://www.php.net/manual/fr/function.define.php
+Documentation : 
+* https://www.php.net/manual/fr/function.define.php
+* https://www.php.net/manual/fr/language.constants.php
+
