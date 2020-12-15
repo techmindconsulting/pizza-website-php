@@ -58,4 +58,4 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 - carte.php : Page affichant la liste des produits et type de produits
 
 - index.php : Page d'acceuil
-- maintenance.php : Page de maintenance Erreur 500
+- maintenance.php : Page de maintenance
