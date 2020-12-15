@@ -34,6 +34,17 @@ function getProducts(int $productId) : array
     return $statement->fetchAll();
 }
 
+function getProductTypeDescription(int $productTypeId) : string 
+{
+    global $connexion;
+    $statement = $connexion->prepare('SELECT description FROM product_type where id = :id');
+    $statement->bindParam(':id', $productTypeId, PDO::PARAM_INT);
+    $statement->execute();
+    $result = $statement->fetch();
+  
+    return $result['description'];
+}
+
 /**
  * hasValidEmail
  *

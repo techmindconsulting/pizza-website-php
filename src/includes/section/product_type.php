@@ -12,7 +12,10 @@
                 <a href="<?= $linkProductType ?>">
                     <div class="card product">
                         <h4 class="product-type"><?= $productType['type']; ?></h4>
+                        <figure>
                         <img src="<?= $productType['image']; ?>" alt="<?= $productType['description']; ?>" width="250">
+                        <figcaption><?= $productType['description']; ?></figcaption>
+                        </figure>
                     </div>
                 </a>
             <?php } ?>
