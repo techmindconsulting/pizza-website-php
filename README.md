@@ -60,10 +60,34 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 - index.php : Page d'acceuil
 - maintenance.php : Page de maintenance
 
-## 3. Notions abordés
+## 3. Notions abordées
 
 #### Inclure des portions de page
   * Une page PHP peut inclure une autre page ou un morceau de page grâce à l'instruction include qui sera remplacée par le contenu de la page demandée. 
   Cette technique permet de placer une portion du site dans un fichier (Ex: shared/header.php)  que l'on inclura dans toutes les pages. Cela permet de centraliser le code du header et permettra aussi une maintenance plus efficace. 
   
-Documentation : https://www.php.net/manual/fr/function.include.php
+  ```
+     <head>
+        <?php include 'src/includes/shared/head.php'; ?>
+    </head>
+  ```
+  
+  Documentation : https://www.php.net/manual/fr/function.include.php
+
+### Constantes
+  * Faire appel à un fichier de configuration pour des paramètres qui changent peu ou pas (Ex: Accès à la base de données)
+  Il est donc possible de stocker ces données dans des constantes.  
+  La portée d'une constante est globale. Les constantes peuvent être accédé depuis partout dans un script sans tenir compte de la portée. 
+  
+  ``` 
+    define("DATABASE_USER", "root");
+    define("DATABASE_PASSWORD", "");
+    define("DATABASE_URL","mysql:host=127.0.0.1:3306;dbname=pizza_website");
+  ``` 
+  
+  ``` 
+    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
+    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
+  ``` 
+  
+Documentation : https://www.php.net/manual/fr/function.define.php
