@@ -59,4 +59,3 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 
 - index.php : Page d'acceuil
 - maintenance.php : Page de maintenance Erreur 500
-- page_introuvable.php : Page introuvable Erreur 404
