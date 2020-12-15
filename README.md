@@ -59,3 +59,10 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 
 - index.php : Page d'acceuil
 - maintenance.php : Page de maintenance
+
+# Notions abordés
+
+#### Inclure des portions de page
+  * Une page PHP peut inclure une autre page ou un morceau de page grâce à l'instruction include qui sera remplacée par le contenu de la page demandée. 
+  Cette technique permet de placer une portion du site dans un fichier (Ex: shared/header.php)  que l'on inclura dans toutes les pages. Cela permet de centraliser le code du header et permettra aussi une maintenance plus efficace. 
+Documentation : https://www.php.net/manual/fr/function.include.php
