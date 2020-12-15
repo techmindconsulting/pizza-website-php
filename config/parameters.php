@@ -16,4 +16,6 @@
     define("DATABASE_USER", "root");
     define("DATABASE_PASSWORD", "");
     define("DATABASE_URL","mysql:host=127.0.0.1:3306;dbname=pizza_website");
+
+    define("MAINTENANCE_MODE", false);
 ?>

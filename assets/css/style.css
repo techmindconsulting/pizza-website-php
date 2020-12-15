@@ -22,6 +22,11 @@ iframe {
     border: 0;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 /* Buttons */
 .red-button {
     text-decoration: none;

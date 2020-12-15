@@ -1,12 +1,15 @@
+<?php
+    header("HTTP/1.1 503 Service Unavailable");
+    header("Status: 503 Service Unavailable");
+    header("Retry-After: 3600");
+?>
 <!DOCTYPE html>
-<html lang="fr">
+<html>
     <head>
+        <title>Pizza Billy - Mode Maintenance</title>
+        <meta name="robots" content="none" />
     </head>
     <body>
-    <header id="header" class="header">
-        <?php
-            echo 'maintenance';  
-        ?>
-    </header>
+        <h1>Mode maintenance</h1>
     </body>
 </html>

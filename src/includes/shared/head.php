@@ -32,4 +32,5 @@ crossorigin="anonymous" />
 <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
 
 <link rel="stylesheet" href="assets/css/style.css">
+
 <?php include 'boostrap.php'; ?>

@@ -11,7 +11,7 @@
                 ?>
                 <a href="<?= $linkProductType ?>">
                     <div class="card product">
-                        <h3 class="product-type"><?= $productType['type']; ?></h3>
+                        <h4 class="product-type"><?= $productType['type']; ?></h4>
                         <img src="<?= $productType['image']; ?>" alt="<?= $productType['description']; ?>" width="250">
                     </div>
                 </a>

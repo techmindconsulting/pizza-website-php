@@ -16,6 +16,24 @@ function getProductTypes() : array
     return $statement->fetchAll();
 }
 
+
+/**
+ * getProductTypes
+ *
+ * @return array
+ */
+function getProducts(int $productId) : array
+{
+    global $connexion;
+
+    $statement = $connexion->prepare('SELECT * FROM product WHERE product_type_id = :id');
+    $statement->bindParam(':id', $productId, PDO::PARAM_INT);
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    
+    return $statement->fetchAll();
+}
+
 /**
  * hasValidEmail
  *
