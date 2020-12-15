@@ -11,10 +11,10 @@ if ($isValid) {
     $_POST['message']);
 
     if ($hasSent) {
-        header('Location:../index.php?sent=ok#contact');
+        header('Location:../../index.php?sent=ok#contact');
         die;
     }
 }
 
-header('Location:../index.php?sent=ko#contact');
+header('Location:../../index.php?sent=ko#contact');
 die;

@@ -82,7 +82,7 @@ function isValidForm(array $postDatas) : bool
  */
 function sendEmail(string $firstname, string $lastname, string $email, string $phone, string $message) : bool
 {
-    include '../config/parameters.php';
+    include '../../config/parameters.php';
     $fullname = $firstname. ' '. $lastname;
     $message = filter_var($message, FILTER_SANITIZE_STRING);
     $fullname = filter_var($fullname, FILTER_SANITIZE_STRING);
@@ -92,7 +92,7 @@ function sendEmail(string $firstname, string $lastname, string $email, string $p
     $header .= 'Content-Type:text/html; charset="utf-8"' . "\n";
     $header .= 'Content-Transfer-Encoding: 8bit';
   
-    if (mail(CONTACT_EMAIL, "Contact - pizzabilly.com", $fullname, $header)) {
+    if (mail(CONTACT_EMAIL, "Contact - pizzabilly.com", $message, $header)) {
         return true;
     } else {
         return false;
