@@ -94,3 +94,57 @@ Documentation :
 * https://www.php.net/manual/fr/function.define.php
 * https://www.php.net/manual/fr/language.constants.php
 
+#### Variables et portées
+- La portee d'une variable dépend du contexte dans lequel la variable est définie.
+La variable définie dans une fonction est locale à la fonction
+
+``` 
+function sendEmail(string $firstname, string $lastname, string $email, string $phone, string $message) : bool
+{
+    include '../../config/parameters.php';
+    $fullname = $firstname. ' '. $lastname;
+    $message = filter_var($message, FILTER_SANITIZE_STRING);
+    $fullname = filter_var($fullname, FILTER_SANITIZE_STRING);
+
+    $header = "MIME-Version: 1.0\r\n";
+    $header .= 'From:'.$fullname.'<'.$email.'>' . "\n";
+    $header .= 'Content-Type:text/html; charset="utf-8"' . "\n";
+    $header .= 'Content-Transfer-Encoding: 8bit';
+  
+    if (mail(CONTACT_EMAIL, "Contact - pizzabilly.com", $message, $header)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+``` 
+
+Les variables ci dessus sont locales:
+    * $fullname
+    * $message
+    * $header
+    
+
+- Toute variable définie en dehors d’une fonction a une portée globale. 
+Une variable qui a une portée globale est accessible « globalement », 
+c’est-à-dire dans tout le script sauf dans les espaces locaux d’un script.
+
+ ```
+$connexion = null;
+$message = '';
+
+if (MAINTENANCE_MODE) {
+    header('Location:maintenance.php');
+}
+
+try {
+    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
+    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
+ ``` 
+ Les variables ci dessus sont globales:
+    * $connexion
+    * $message
+ 
+Documentation:
+https://www.php.net/manual/fr/language.variables.scope.php
+
