@@ -96,7 +96,7 @@ Documentation :
 
 #### Variables et portées
 - La portee d'une variable dépend du contexte dans lequel la variable est définie.
-La variable définie dans une fonction est locale à la fonction
+La variable définie dans une fonction est locale à la fonction.
 Les variables ci dessus sont locales: 
    * $fullname 
    * $message 
@@ -128,8 +128,8 @@ Une variable qui a une portée globale est accessible « globalement »,
 c’est-à-dire dans tout le script sauf dans les espaces locaux d’un script.
 
 Les variables ci dessus sont globales:
-    * $connexion
-    * $message
+        * $connexion
+        * $message
 
  ```
 $connexion = null;
