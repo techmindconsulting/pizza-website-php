@@ -170,10 +170,12 @@ Documentation:
 
 #### 7. Connexion à la base de donnée: PDO class
 
-#### 8. Gestion des données de page en page: GET
+#### 8. Les exceptions
 
-#### 9. Gérer un formulaire : POST
+#### 9. Gestion des données de page en page: GET
 
-#### 10. Les filtres
+#### 10. Gérer un formulaire : POST
+
+#### 11. Les filtres
 
 
