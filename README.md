@@ -74,7 +74,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
   
   Documentation : https://www.php.net/manual/fr/function.include.php
 
-#### Constantes
+#### 3. Constantes
   * Faire appel à un fichier de configuration pour des paramètres qui changent peu ou pas (Ex: Accès à la base de données)
   Il est donc possible de stocker ces données dans des constantes.  
   La portée d'une constante est globale. Les constantes peuvent être accédé depuis partout dans un script sans tenir compte de la portée. 
@@ -163,5 +163,16 @@ Documentation:
 * https://www.php.net/manual/fr/language.variables.scope.php
 
 * https://www.php.net/manual/fr/reserved.variables.globals.php
+
+
+#### 4. Les fonctions
+
+#### 5. Connexion à la base de donnée: PDO class
+
+#### 6. Gestion des données de page en page: GET
+
+#### 7. Gérer un formulaire : POST
+
+#### 8. Les filtres
 
 
