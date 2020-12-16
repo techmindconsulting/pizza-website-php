@@ -144,6 +144,23 @@ try {
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
  ``` 
 
+- En PHP, une variable globale doit être déclarée à l'intérieur de chaque fonction afin de pouvoir être utilisée dans cette fonction.
+
+```
+/**
+ * getProductTypes
+ *
+ * @return array
+ */
+function getProductTypes() : array
+{
+    global $connexion;
+
+    $statement = $connexion->prepare('SELECT * FROM product_type');
+ ```
+ 
 Documentation:
 https://www.php.net/manual/fr/language.variables.scope.php
+https://www.php.net/manual/fr/reserved.variables.globals.php
+
 
