@@ -127,9 +127,9 @@ function sendEmail(string $firstname, string $lastname, string $email, string $p
 Une variable qui a une portée globale est accessible « globalement », 
 c’est-à-dire dans tout le script sauf dans les espaces locaux d’un script.
 
-Les variables ci dessus sont globales:
-        * $connexion
-        * $message
+Les variables ci dessus sont globales: 
+   * $message
+   * $connexion 
 
  ```
 $connexion = null;
