@@ -160,7 +160,8 @@ function getProductTypes() : array
  ```
  
 Documentation:
-https://www.php.net/manual/fr/language.variables.scope.php
-https://www.php.net/manual/fr/reserved.variables.globals.php
+* https://www.php.net/manual/fr/language.variables.scope.php
+
+* https://www.php.net/manual/fr/reserved.variables.globals.php
 
 
