@@ -97,6 +97,10 @@ Documentation :
 #### Variables et portées
 - La portee d'une variable dépend du contexte dans lequel la variable est définie.
 La variable définie dans une fonction est locale à la fonction
+Les variables ci dessus sont locales: 
+* $fullname 
+* $message 
+* $header
 
 ``` 
 function sendEmail(string $firstname, string $lastname, string $email, string $phone, string $message) : bool
@@ -119,15 +123,13 @@ function sendEmail(string $firstname, string $lastname, string $email, string $p
 }
 ``` 
 
-Les variables ci dessus sont locales:
-    * $fullname
-    * $message
-    * $header
-    
-
 - Toute variable définie en dehors d’une fonction a une portée globale. 
 Une variable qui a une portée globale est accessible « globalement », 
 c’est-à-dire dans tout le script sauf dans les espaces locaux d’un script.
+
+ Les variables ci dessus sont globales:
+    * $connexion
+    * $message
 
  ```
 $connexion = null;
@@ -141,10 +143,7 @@ try {
     $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
  ``` 
- Les variables ci dessus sont globales:
-    * $connexion
-    * $message
- 
+
 Documentation:
 https://www.php.net/manual/fr/language.variables.scope.php
 
