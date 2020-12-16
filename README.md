@@ -164,15 +164,16 @@ Documentation:
 
 * https://www.php.net/manual/fr/reserved.variables.globals.php
 
+#### 5. Les boucles et conditions
 
-#### 4. Les fonctions
+#### 6. Les fonctions
 
-#### 5. Connexion à la base de donnée: PDO class
+#### 7. Connexion à la base de donnée: PDO class
 
-#### 6. Gestion des données de page en page: GET
+#### 8. Gestion des données de page en page: GET
 
-#### 7. Gérer un formulaire : POST
+#### 9. Gérer un formulaire : POST
 
-#### 8. Les filtres
+#### 10. Les filtres
 
 
