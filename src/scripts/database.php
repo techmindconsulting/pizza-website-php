@@ -8,7 +8,6 @@ if (MAINTENANCE_MODE) {
 }
 
 try {
-    $statusCode = 200;
     $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
     
@@ -18,19 +17,4 @@ try {
 } catch(PDOException $exception) {
     $message = $exception->getMessage();
     header('Location:maintenance.php');
-}
-
-/**
- * hasDBConnection
- *
- * @return mixed
- */
-function hasDBConnection()
-{
-    global $connexion;
-    if ($connexion !== null) {
-        return $connexion->getAttribute(PDO::ATTR_CONNECTION_STATUS);
-    } else {
-        return false;
-    }
 }

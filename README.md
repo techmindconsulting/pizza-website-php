@@ -29,6 +29,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     │   │       └── menu.php
     │   └── scripts/
     │       ├── function.php
+    |       ├── mailer.php
     │       ├── database.php
     │       └── send_email.php
     ├── sql/
@@ -147,11 +148,6 @@ try {
 - En PHP, une variable globale doit être déclarée à l'intérieur de chaque fonction afin de pouvoir être utilisée dans cette fonction.
 
 ```
-/**
- * getProductTypes
- *
- * @return array
- */
 function getProductTypes() : array
 {
     global $connexion;
@@ -166,16 +162,115 @@ Documentation:
 
 #### 5. Les boucles et conditions
 
+##### 5.1 Boucles
+``` 
+<?php 
+        $productTypes = getProductTypes();
+        foreach($productTypes as $productType) {
+            $linkProductType = 'carte.php?product-type-id='. $productType['id']; ?>
+            <li><a class="black-button <?php if ($_GET['product-type-id'] === $productType['id']) echo 'active'; ?>" href="<?= $linkProductType ?>"><?= $productType['type'] ?></a></li>
+<?php   } ?>
+``` 
+
+##### 5.2 Conditions
+
+``` 
+<?php 
+    if ($currentPage === 'contact') { ?> 
+        class="active"
+<?php } ?>>La carte</a></li>
+```
+
 #### 6. Les fonctions
+
+``` 
+function isValidForm(array $postDatas) : bool
+{
+    if (empty($postDatas)) {
+        return false;
+    }
+
+    foreach ($postDatas as $key => $value) {
+        if (empty($value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+```
+
+```
+$isValid =  isValidForm($_POST);
+```
 
 #### 7. Connexion à la base de donnée: PDO class
 
+```
+    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
+    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
+```
 #### 8. Les exceptions
 
+```
+try {
+    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
+    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
+    
+    // Configure un attribut de base de données => PDO::ERRMODE_EXCEPTION : émet une exception.
+    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+} catch(PDOException $exception) {
+    $message = $exception->getMessage();
+    header('Location:maintenance.php');
+}
+``` 
 #### 9. Gestion des données de page en page: GET
 
+```
+<?php 
+  $linkProductType = 'carte.php?product-type-id='. $productType['id'];
+?>
+```
+
+```
+<p><?= getProductTypeDescription($_GET['product-type-id']); ?></p>
+```
 #### 10. Gérer un formulaire : POST
 
+```
+  <form name="contact-form" method="POST" action="src/scripts/send_email.php">
+```
+
+```
+$isValid =  isValidForm($_POST);
+
+if ($isValid) {
+``` 
+
+``` 
+function isValidForm(array $postDatas) : bool
+{
+    if (empty($postDatas)) {
+        return false;
+    }
+
+    foreach ($postDatas as $key => $value) {
+        if (empty($value)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+``` 
 #### 11. Les filtres
 
+``` 
+if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return true;
+} else {
+        return false;
+}
+``` 
 

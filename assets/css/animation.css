@@ -1,0 +1,12 @@
+@keyframes slider {
+
+    from {
+        background-image: url('../images/dark_tint.png'), url('../images/pizza-banner-0.jpg');
+    }
+    50% {
+        background-image: url('../images/dark_tint.png'), url('../images/pizza-banner-1.jpg');
+    }
+    to {
+        background-image: url('../images/dark_tint.png'), url('../images/pizza-banner-2.jpg');
+    }
+}

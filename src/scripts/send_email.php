@@ -1,10 +1,11 @@
 <?php
 require 'function.php';
+require 'mailer.php';
 
 $isValid =  isValidForm($_POST);
 
 if ($isValid) {
-    $hasSent = sendEmail($_POST['firstname'], 
+    $hasSent = sendContactMail($_POST['firstname'], 
     $_POST['lastname'], 
     $_POST['email'], 
     $_POST['phone'], 

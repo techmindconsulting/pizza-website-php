@@ -6,11 +6,11 @@
             <ul class="product-types-links">
                
                 <?php 
-                    $productTypes = getProductTypes();
-                    foreach($productTypes as $productType) {
-                        $linkProductType = 'carte.php?product-type-id='. $productType['id']; ?>
-                        <li><a class="black-button <?php if ($_GET['product-type-id'] === $productType['id']) echo 'active'; ?>" href="<?= $linkProductType ?>"><?= $productType['type'] ?></a></li>
-                <?php  } ?>
+                        $productTypes = getProductTypes();
+                        foreach($productTypes as $productType) {
+                            $linkProductType = 'carte.php?product-type-id='. $productType['id']; ?>
+                            <li><a class="black-button <?php if ($_GET['product-type-id'] === $productType['id']) echo 'active'; ?>" href="<?= $linkProductType ?>"><?= $productType['type'] ?></a></li>
+                <?php   } ?>
                 </li>
             </ul>
         </p>

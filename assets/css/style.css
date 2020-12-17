@@ -17,11 +17,9 @@ sup {
     font-size: 1rem;
     text-transform: lowercase;
 }
-
 iframe {
     border: 0;
 }
-
 a {
     text-decoration: none;
     color: black;
@@ -46,7 +44,6 @@ a {
     color: white;
     border: 1px solid red;
 }
-
 .black-button {
     text-decoration: none;
     font-size: 1.25rem;
@@ -68,7 +65,6 @@ a {
     color: black;
     border: 1px solid black;
 }
-
 .whatsapp-button {
     position: fixed;
     bottom: 1rem;
@@ -80,7 +76,7 @@ a {
     transform: rotate(360deg);
 }
 
-/** Colors **/
+/* Colors */
 .background-grey {
  background-color: #f5f5f5;
 }
@@ -94,7 +90,7 @@ a {
     color: white;
 }
 
-/** Circle **/
+/* Shape */
 .rounded {
     display: inline-block;
     width: 100px;
@@ -102,8 +98,7 @@ a {
     border-radius: 50%;
 }
 
-/** Alerte message */
-
+/* Alerte message */
 h2 + p.alert {
     font-size: 14px;
     border-radius: 5px;
@@ -111,19 +106,16 @@ h2 + p.alert {
     height: 40px;
     padding: 7px 0;
 }
-
 h2 + p.alert-success {
     background-color: green;
     color: white;
 }
-
 h2 +  p.alert-error {
     background-color: red;
     color: white;
 }
 
-
-/** Header Topbar **/ 
+/* Header */ 
 .header {
     color: white;
 }
@@ -170,14 +162,11 @@ h2 +  p.alert-error {
     background-color: white;
     color: black;
 }
-
 .header .topbar ul li .active, ul.product-types-links li a.active  {
     background-color: white;
     color: black;
     border: 1px solid black;
 }
-
-/** Header Banner **/ 
 .header .banner {
     background-image: url('../images/dark_tint.png'), url('../images/pizza-banner-0.jpg');
     background-size: cover;
@@ -190,20 +179,6 @@ h2 +  p.alert-error {
     -moz-animation: slider 10s infinite alternate;
    -o-animation: slider 10s infinite alternate;
 }
-
-@keyframes slider {
-
-    from {
-        background-image: url('../images/dark_tint.png'), url('../images/pizza-banner-0.jpg');
-    }
-    50% {
-        background-image: url('../images/dark_tint.png'), url('../images/pizza-banner-1.jpg');
-    }
-    to {
-        background-image: url('../images/dark_tint.png'), url('../images/pizza-banner-2.jpg');
-    }
-}
-
 .header .banner h2 {
     font-size: 4rem;
     text-transform: uppercase;
@@ -276,13 +251,11 @@ h2 +  p.alert-error {
     flex: 0 0 auto; /* raccourci de flex-grow flex-shrink et flex-basis */
     box-shadow: none;
 }
-
 .service div.product:hover {
     cursor: pointer;
     background-color: lightgray;
     color: black !important; 
 }
-
 .service .icon {
     padding-top: 2rem;
     font-size: 2rem;
@@ -294,7 +267,6 @@ h2 +  p.alert-error {
     color: grey;
     padding-top: 1.7rem;
 }
-
 .service h3.product-type {
     padding-top: 0.5rem;
 }
@@ -323,7 +295,6 @@ h2 +  p.alert-error {
 .contact label::after {
     content: ' *'
 }
-
 .contact input:not(.black-button),
 .contact textarea {
     background-color: #ffffff;
@@ -335,12 +306,10 @@ h2 +  p.alert-error {
     height: 2.75em;
     outline: none;
 }
-
 .contact .form-control:focus {
     background-color:   #f5f5f5;
     border: 1px solid lightgrey;
 }
-
 .contact textarea {
     height: 200px;
     padding-top: 0.5rem;
@@ -382,6 +351,45 @@ h2 +  p.alert-error {
     width: 72%;
     color: #cdced0;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 2em 0;
+}
+
+table th {
+    color: #474747;
+    font-size: 0.9em;
+    font-weight: 700;
+    padding: 0 0.75em 0.75em 0.75em;
+    text-align: left;
+}
+
+table tbody tr {
+    border: solid 1px rgba(144, 144, 144, 0.25);
+    border-left: 0;
+    border-right: 0;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: rgba(144, 144, 144, 0.075);
+}
+
+table tbody td {
+    padding: 0.75rem 0.75rem;
+    text-align: left;
+
+}
+
+ul.product-types-links {
+    list-style-type: none;
+}
+
+ul.product-types-links li {
+    display: inline-block;
+}
+
 
 @media screen and (max-width: 900px) {
     .red-button {
@@ -492,7 +500,6 @@ h2 +  p.alert-error {
         margin-bottom: 1rem;
     }
 }
-
 @media screen and (max-width: 400px) {
 
     html {
@@ -511,42 +518,3 @@ h2 +  p.alert-error {
         width: 40px;
     }
 }
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 0 2em 0;
-}
-
-table th {
-    color: #474747;
-    font-size: 0.9em;
-    font-weight: 700;
-    padding: 0 0.75em 0.75em 0.75em;
-    text-align: left;
-}
-
-table tbody tr {
-    border: solid 1px rgba(144, 144, 144, 0.25);
-    border-left: 0;
-    border-right: 0;
-}
-
-table tbody tr:nth-child(odd) {
-    background-color: rgba(144, 144, 144, 0.075);
-}
-
-table tbody td {
-    padding: 0.75rem 0.75rem;
-    text-align: left;
-
-}
-
-ul.product-types-links {
-    list-style-type: none;
-}
-
-ul.product-types-links li {
-    display: inline-block;
-}
-

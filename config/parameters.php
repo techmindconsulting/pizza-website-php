@@ -1,6 +1,7 @@
 <?php
     define("CONTACT_PHONE", "06 11 57 16 31");
     define("CONTACT_EMAIL", "pizza-billy@yopmail.com");
+    define("CONTACT_MAIL_SUBJECT", "Contact - pizzabilly.com");
     define("CONTACT_ADDRESS", "35 rue Vitalis, 13005 Marseille");
     define("CONTACT_OPENING_HOURS", ['datetime' => '16:30', 'display_as' => '16h30' ]);
     define("CONTACT_CLOSING_HOURS", ['datetime' => '22:30', 'display_as' => '22h30']);
@@ -17,5 +18,9 @@
     define("DATABASE_PASSWORD", "");
     define("DATABASE_URL","mysql:host=127.0.0.1:3306;dbname=pizza_website");
 
+    define('MAIL_SUBJECT', '');
+    define('MAIL_USER', '');
+    define('MAIL_PASSWORD', '');
+
+
     define("MAINTENANCE_MODE", false);
-?>

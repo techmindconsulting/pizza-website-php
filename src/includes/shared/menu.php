@@ -4,9 +4,9 @@
             <ul>
                 <li><a href="#service" 
                 <?php 
-                    if ($currentPage === 'homepage') { ?> 
-                        class="active" 
-                <?php } ?> 
+                        if ($currentPage === 'homepage') { ?> 
+                            class="active" 
+                <?php   } ?> 
                      >Service</a></li>
                 <li><a href="index.php#localisation">Plan d'accès</a></li>
                 <li><a href="index.php#contact">Contact</a></li>
@@ -14,8 +14,7 @@
                 <?php 
                     if ($currentPage === 'contact') { ?> 
                         class="active"
-                <?php } ?>
-                    >La carte</a></li>
+                <?php } ?>>La carte</a></li>
             </ul>
         </nav>
     </div>
