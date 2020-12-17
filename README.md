@@ -63,7 +63,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 
 ## 3. Notions abordées
 
-#### Inclure des portions de page
+#### 1. Inclure des portions de page
   * Une page PHP peut inclure une autre page ou un morceau de page grâce à l'instruction include qui sera remplacée par le contenu de la page demandée. 
   Cette technique permet de placer une portion du site dans un fichier (Ex: shared/header.php)  que l'on inclura dans toutes les pages. Cela permet de centraliser le code du header et permettra aussi une maintenance plus efficace. 
   
@@ -73,9 +73,11 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     </head>
   ```
   
-  Documentation : https://www.php.net/manual/fr/function.include.php
+ Documentation : 
+  * https://www.php.net/manual/fr/function.include.php
+  * https://www.php.net/manual/fr/function.require.php
 
-#### 3. Constantes
+#### 2. Constantes
   * Faire appel à un fichier de configuration pour des paramètres qui changent peu ou pas (Ex: Accès à la base de données)
   Il est donc possible de stocker ces données dans des constantes.  
   La portée d'une constante est globale. Les constantes peuvent être accédé depuis partout dans un script sans tenir compte de la portée. 
@@ -95,7 +97,7 @@ Documentation :
 * https://www.php.net/manual/fr/function.define.php
 * https://www.php.net/manual/fr/language.constants.php
 
-#### Variables et portées
+#### 3. Variables et portées
 - La portee d'une variable dépend du contexte dans lequel la variable est définie.
 La variable définie dans une fonction est locale à la fonction.
 Les variables ci dessus sont locales: 
@@ -160,9 +162,9 @@ Documentation:
 
 * https://www.php.net/manual/fr/reserved.variables.globals.php
 
-#### 5. Les boucles et conditions
+#### 4. Les boucles et conditions
 
-##### 5.1 Boucles
+##### 4.1 Boucle Foreach
 ``` 
 <?php 
         $productTypes = getProductTypes();
@@ -172,7 +174,11 @@ Documentation:
 <?php   } ?>
 ``` 
 
-##### 5.2 Conditions
+Documentation:
+* https://www.php.net/manual/fr/control-structures.foreach.php
+
+
+##### 4.2 Conditions
 
 ``` 
 <?php 
@@ -180,8 +186,11 @@ Documentation:
         class="active"
 <?php } ?>>La carte</a></li>
 ```
+Documentaton:
+* https://www.php.net/manual/fr/control-structures.if.php
+* https://www.php.net/manual/fr/control-structures.else.php
 
-#### 6. Les fonctions
+#### 5. Les fonctions
 
 ``` 
 function isValidForm(array $postDatas) : bool
@@ -204,13 +213,13 @@ function isValidForm(array $postDatas) : bool
 $isValid =  isValidForm($_POST);
 ```
 
-#### 7. Connexion à la base de donnée: PDO class
+#### 6. Connexion à la base de donnée: PDO class
 
 ```
     $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
 ```
-#### 8. Les exceptions
+#### 7. Les exceptions
 
 ```
 try {
@@ -225,7 +234,20 @@ try {
     header('Location:maintenance.php');
 }
 ``` 
-#### 9. Gestion des données de page en page: GET
+
+``` 
+function getProductTypes() : array
+{
+    global $connexion;
+
+    $statement = $connexion->prepare('SELECT * FROM product_type');
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    
+    return $statement->fetchAll();
+}
+``` 
+#### 8. Gestion des données de page en page: GET
 
 ```
 <?php 
@@ -236,7 +258,7 @@ try {
 ```
 <p><?= getProductTypeDescription($_GET['product-type-id']); ?></p>
 ```
-#### 10. Gérer un formulaire : POST
+#### 9. Gérer un formulaire : POST
 
 ```
   <form name="contact-form" method="POST" action="src/scripts/send_email.php">
@@ -264,7 +286,8 @@ function isValidForm(array $postDatas) : bool
     return true;
 }
 ``` 
-#### 11. Les filtres
+
+#### 10. Les filtres
 
 ``` 
 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
