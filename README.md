@@ -74,8 +74,8 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
   ```
   
  Documentation : 
-  * https://www.php.net/manual/fr/function.include.php
-  * https://www.php.net/manual/fr/function.require.php
+  * [include](https://www.php.net/manual/fr/function.include.php)
+  * [require](https://www.php.net/manual/fr/function.require.php)
 
 #### 2. Constantes
   * Faire appel à un fichier de configuration pour des paramètres qui changent peu ou pas (Ex: Accès à la base de données)
@@ -94,8 +94,8 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
   ``` 
   
 Documentation : 
-* https://www.php.net/manual/fr/function.define.php
-* https://www.php.net/manual/fr/language.constants.php
+* [define — Définit une constante](https://www.php.net/manual/fr/function.define.php)
+* [Les constantes](https://www.php.net/manual/fr/language.constants.php)
 
 #### 3. Variables et portées
 - La portee d'une variable dépend du contexte dans lequel la variable est définie.
@@ -158,9 +158,9 @@ function getProductTypes() : array
  ```
  
 Documentation:
-* https://www.php.net/manual/fr/language.variables.scope.php
 
-* https://www.php.net/manual/fr/reserved.variables.globals.php
+* [Portée des variables](https://www.php.net/manual/fr/language.variables.scope.php)
+* [$GLOBALS — Référence toutes les variables disponibles dans un contexte global](https://www.php.net/manual/fr/reserved.variables.globals.php)
 
 #### 4. Les boucles et conditions
 
@@ -175,7 +175,7 @@ Documentation:
 ``` 
 
 Documentation:
-* https://www.php.net/manual/fr/control-structures.foreach.php
+* [Boucle foreach](https://www.php.net/manual/fr/control-structures.foreach.php)
 
 
 ##### 4.2 Conditions
@@ -187,8 +187,8 @@ Documentation:
 <?php } ?>>La carte</a></li>
 ```
 Documentaton:
-* https://www.php.net/manual/fr/control-structures.if.php
-* https://www.php.net/manual/fr/control-structures.else.php
+* [Structures de controles if](https://www.php.net/manual/fr/control-structures.if.php)
+* [Structures de controles else](https://www.php.net/manual/fr/control-structures.else.php)
 
 #### 5. Les fonctions
 
@@ -213,12 +213,21 @@ function isValidForm(array $postDatas) : bool
 $isValid =  isValidForm($_POST);
 ```
 
+Documentation:
+* [Les fonctions définies par l'utilisateur](https://www.php.net/manual/fr/functions.user-defined.php)
+* [Les arguments de fonction](https://www.php.net/manual/fr/functions.arguments.php)
+* [Les valeurs de retour](https://www.php.net/manual/fr/functions.returning-values.php)
+* [https://www.php.net/manual/fr/functions.internal.php](https://www.php.net/manual/fr/functions.internal.php)
+
 #### 6. Connexion à la base de donnée: PDO class
 
 ```
     $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
 ```
+Documentation:
+* [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
+
 #### 7. Les exceptions
 
 ```
@@ -234,6 +243,9 @@ try {
     header('Location:maintenance.php');
 }
 ``` 
+
+Documentation:
+[Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
 ``` 
 function getProductTypes() : array
@@ -258,6 +270,10 @@ function getProductTypes() : array
 ```
 <p><?= getProductTypeDescription($_GET['product-type-id']); ?></p>
 ```
+
+Documentation :
+[$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
+
 #### 9. Gérer un formulaire : POST
 
 ```
@@ -287,6 +303,9 @@ function isValidForm(array $postDatas) : bool
 }
 ``` 
 
+Documentation :
+* [$_POST — Variables HTTP POST](https://www.php.net/manual/fr/reserved.variables.post.php)
+
 #### 10. Les filtres
 
 ``` 
@@ -296,4 +315,11 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return false;
 }
 ``` 
+
+Documentation :
+* [filter_var — Filtre une variable avec un filtre spécifique](https://www.php.net/manual/fr/function.filter-var.php)
+
+* [En savoir plus sur les filtres](https://www.php.net/manual/fr/book.filter.php)
+
+
 
