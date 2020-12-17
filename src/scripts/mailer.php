@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Build Mail Header
+ * Build mail header
  *
  * @param  string $fullname
  * @param  string $email
@@ -18,7 +18,7 @@ function buildMailHeader(string $fullname, string $email) : string
 }
 
 /**
- * send Mail
+ * Send mail
  *
  * @param  string $to
  * @param  string $subject
@@ -36,7 +36,7 @@ function sendMail(string $to, string $subject, string $message, string $header):
 }
 
 /**
- * Send Mail from contact form
+ * Send mail from contact form
  *
  * @param  string $firstname
  * @param  string $lastname
