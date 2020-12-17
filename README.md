@@ -94,7 +94,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
   ``` 
   
-<u>Documentation</u> : 
+__Documentation__ : 
 
 * [define — Définit une constante](https://www.php.net/manual/fr/function.define.php)
 * [Les constantes](https://www.php.net/manual/fr/language.constants.php)
