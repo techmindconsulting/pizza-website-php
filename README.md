@@ -73,7 +73,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     </head>
   ```
   
- Documentation : 
+ __Documentation__ : 
  
   * [include](https://www.php.net/manual/fr/function.include.php)
   * [require](https://www.php.net/manual/fr/function.require.php)
@@ -94,7 +94,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
   ``` 
   
-Documentation : 
+<u>Documentation</u> : 
 
 * [define — Définit une constante](https://www.php.net/manual/fr/function.define.php)
 * [Les constantes](https://www.php.net/manual/fr/language.constants.php)
@@ -159,7 +159,7 @@ function getProductTypes() : array
     $statement = $connexion->prepare('SELECT * FROM product_type');
  ```
  
-Documentation:
+__Documentation__:
 
 * [Portée des variables](https://www.php.net/manual/fr/language.variables.scope.php)
 * [$GLOBALS — Référence toutes les variables disponibles dans un contexte global](https://www.php.net/manual/fr/reserved.variables.globals.php)
@@ -176,7 +176,7 @@ Documentation:
 <?php   } ?>
 ``` 
 
-Documentation:
+__Documentation__:
 
 * [Boucle foreach](https://www.php.net/manual/fr/control-structures.foreach.php)
 
@@ -189,7 +189,7 @@ Documentation:
         class="active"
 <?php } ?>>La carte</a></li>
 ```
-Documentaton:
+__Documentation__:
 
 * [Structures de controles if](https://www.php.net/manual/fr/control-structures.if.php)
 * [Structures de controles else](https://www.php.net/manual/fr/control-structures.else.php)
@@ -217,7 +217,7 @@ function isValidForm(array $postDatas) : bool
 $isValid =  isValidForm($_POST);
 ```
 
-Documentation:
+__Documentation__:
 
 * [Les fonctions définies par l'utilisateur](https://www.php.net/manual/fr/functions.user-defined.php)
 * [Les arguments de fonction](https://www.php.net/manual/fr/functions.arguments.php)
@@ -244,7 +244,7 @@ function getProductTypes() : array
 }
 ```
 
-Documentation:
+__Documentation__:
 
 * [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
 * [PDO::prepare — Prépare une requête à l'exécution et retourne un objet](https://www.php.net/manual/fr/pdo.prepare.php)
@@ -265,7 +265,7 @@ try {
 }
 ``` 
 
-Documentation:
+__Documentation__:
 
 [Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
@@ -282,7 +282,7 @@ Documentation:
 <p><?= getProductTypeDescription($_GET['product-type-id']); ?></p>
 ```
 
-Documentation :
+__Documentation__:
 
 [$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
 
@@ -316,7 +316,7 @@ function isValidForm(array $postDatas) : bool
 }
 ``` 
 
-Documentation :
+__Documentation__:
 
 * [$_POST — Variables HTTP POST](https://www.php.net/manual/fr/reserved.variables.post.php)
 
@@ -331,7 +331,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 ``` 
 
-Documentation :
+__Documentation__:
 
 * [filter_var — Filtre une variable avec un filtre spécifique](https://www.php.net/manual/fr/function.filter-var.php)
 * [En savoir plus sur les filtres](https://www.php.net/manual/fr/book.filter.php)
