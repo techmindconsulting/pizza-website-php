@@ -224,15 +224,30 @@ Documentation:
 * [Les valeurs de retour](https://www.php.net/manual/fr/functions.returning-values.php)
 * [https://www.php.net/manual/fr/functions.internal.php](https://www.php.net/manual/fr/functions.internal.php)
 
-#### 6. Connexion à la base de donnée: PDO class
+#### 6. Connexion à la base de donnée: PDO class et SQL
 
 ```
     $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
 ```
+
+``` 
+function getProductTypes() : array
+{
+    global $connexion;
+
+    $statement = $connexion->prepare('SELECT * FROM product_type');
+    $statement->execute();
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+    
+    return $statement->fetchAll();
+}
+```
+
 Documentation:
 
 * [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
+* [PDO::prepare — Prépare une requête à l'exécution et retourne un objet](https://www.php.net/manual/fr/pdo.prepare.php)
 
 #### 7. Les exceptions
 
@@ -254,18 +269,7 @@ Documentation:
 
 [Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
-``` 
-function getProductTypes() : array
-{
-    global $connexion;
-
-    $statement = $connexion->prepare('SELECT * FROM product_type');
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_ASSOC);
-    
-    return $statement->fetchAll();
-}
-``` 
+ 
 #### 8. Gestion des données de page en page: GET
 
 ```
@@ -281,6 +285,7 @@ function getProductTypes() : array
 Documentation :
 
 [$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
+
 
 #### 9. Gérer un formulaire : POST
 
@@ -315,6 +320,7 @@ Documentation :
 
 * [$_POST — Variables HTTP POST](https://www.php.net/manual/fr/reserved.variables.post.php)
 
+
 #### 10. Les filtres
 
 ``` 
@@ -328,7 +334,6 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 Documentation :
 
 * [filter_var — Filtre une variable avec un filtre spécifique](https://www.php.net/manual/fr/function.filter-var.php)
-
 * [En savoir plus sur les filtres](https://www.php.net/manual/fr/book.filter.php)
 
 
