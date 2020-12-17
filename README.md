@@ -74,6 +74,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
   ```
   
  Documentation : 
+ 
   * [include](https://www.php.net/manual/fr/function.include.php)
   * [require](https://www.php.net/manual/fr/function.require.php)
 
@@ -94,6 +95,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
   ``` 
   
 Documentation : 
+
 * [define — Définit une constante](https://www.php.net/manual/fr/function.define.php)
 * [Les constantes](https://www.php.net/manual/fr/language.constants.php)
 
@@ -175,6 +177,7 @@ Documentation:
 ``` 
 
 Documentation:
+
 * [Boucle foreach](https://www.php.net/manual/fr/control-structures.foreach.php)
 
 
@@ -187,6 +190,7 @@ Documentation:
 <?php } ?>>La carte</a></li>
 ```
 Documentaton:
+
 * [Structures de controles if](https://www.php.net/manual/fr/control-structures.if.php)
 * [Structures de controles else](https://www.php.net/manual/fr/control-structures.else.php)
 
@@ -214,6 +218,7 @@ $isValid =  isValidForm($_POST);
 ```
 
 Documentation:
+
 * [Les fonctions définies par l'utilisateur](https://www.php.net/manual/fr/functions.user-defined.php)
 * [Les arguments de fonction](https://www.php.net/manual/fr/functions.arguments.php)
 * [Les valeurs de retour](https://www.php.net/manual/fr/functions.returning-values.php)
@@ -226,6 +231,7 @@ Documentation:
     [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
 ```
 Documentation:
+
 * [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
 
 #### 7. Les exceptions
@@ -245,6 +251,7 @@ try {
 ``` 
 
 Documentation:
+
 [Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
 ``` 
@@ -272,6 +279,7 @@ function getProductTypes() : array
 ```
 
 Documentation :
+
 [$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
 
 #### 9. Gérer un formulaire : POST
@@ -304,6 +312,7 @@ function isValidForm(array $postDatas) : bool
 ``` 
 
 Documentation :
+
 * [$_POST — Variables HTTP POST](https://www.php.net/manual/fr/reserved.variables.post.php)
 
 #### 10. Les filtres
@@ -317,6 +326,7 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 ``` 
 
 Documentation :
+
 * [filter_var — Filtre une variable avec un filtre spécifique](https://www.php.net/manual/fr/function.filter-var.php)
 
 * [En savoir plus sur les filtres](https://www.php.net/manual/fr/book.filter.php)
