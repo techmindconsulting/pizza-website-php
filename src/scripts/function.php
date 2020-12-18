@@ -1,10 +1,5 @@
 <?php 
 
-/**
- * getProductTypes
- *
- * @return array
- */
 function getProductTypes() : array
 {
     global $connexion;
@@ -16,12 +11,6 @@ function getProductTypes() : array
     return $statement->fetchAll();
 }
 
-/**
- * getProducts
- *
- * @param  int $productId
- * @return array
- */
 function getProducts(int $productId) : array
 {
     global $connexion;
@@ -45,12 +34,6 @@ function getProductTypeDescription(int $productTypeId) : string
     return $result['description'];
 }
 
-/**
- * hasValidEmail
- *
- * @param  string $email
- * @return bool
- */
 function hasValidEmail(string $email) : bool
 {
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -60,12 +43,6 @@ function hasValidEmail(string $email) : bool
     }
 }
 
-/**
- * isValidForm
- *
- * @param  array $postDatas
- * @return bool
- */
 function isValidForm(array $postDatas) : bool
 {
     if (empty($postDatas)) {

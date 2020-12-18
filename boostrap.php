@@ -1,4 +1,4 @@
 <?php
-    include 'config/parameters.php';
-    include 'src/scripts/function.php'; 
-    include 'src/scripts/database.php';
+    require 'config/parameters.php';
+    require 'src/scripts/function.php'; 
+    require 'src/scripts/database.php';

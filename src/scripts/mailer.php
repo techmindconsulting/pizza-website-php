@@ -1,12 +1,5 @@
 <?php 
 
-/**
- * Build mail header
- *
- * @param  string $fullname
- * @param  string $email
- * @return void
- */
 function buildMailHeader(string $fullname, string $email) : string
 {
     $header = "MIME-Version: 1.0\r\n";
@@ -17,15 +10,6 @@ function buildMailHeader(string $fullname, string $email) : string
     return $header;
 }
 
-/**
- * Send mail
- *
- * @param  string $to
- * @param  string $subject
- * @param  string $message
- * @param  string $header
- * @return bool
- */
 function sendMail(string $to, string $subject, string $message, string $header): bool
 {
     if (mail(CONTACT_EMAIL, CONTACT_MAIL_SUBJECT, $message, $header)) {
@@ -35,16 +19,6 @@ function sendMail(string $to, string $subject, string $message, string $header):
     }
 }
 
-/**
- * Send mail from contact form
- *
- * @param  string $firstname
- * @param  string $lastname
- * @param  string $email
- * @param  string $phone
- * @param  string $message
- * @return bool
- */
 function sendContactMail(string $firstname, 
                 string $lastname, 
                 string $email, 
