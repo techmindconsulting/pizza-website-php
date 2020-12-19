@@ -22,5 +22,8 @@
     define('MAIL_USER', '');
     define('MAIL_PASSWORD', '');
 
+    define('ADMIN_EMAIL', 'saidi@yopmail.com');
+    define('ADMIN_NAME', 'saidi');
+
 
     define("MAINTENANCE_MODE", false);
