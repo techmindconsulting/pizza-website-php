@@ -32,5 +32,5 @@ function sendContactMail(string $firstname,
 
     $header = buildMailHeader($fullname, $email);
 
-    sendMail(CONTACT_EMAIL,CONTACT_MAIL_SUBJECT,$message,$header);
+    return sendMail(CONTACT_EMAIL,CONTACT_MAIL_SUBJECT,$message,$header);
 }
