@@ -227,8 +227,7 @@ __Documentation__:
 #### 6. Connexion à la base de donnée: PDO class et SQL
 
 ```
-    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
-    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
+    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD]);
 ```
 
 ``` 
