@@ -24,6 +24,12 @@ a {
     text-decoration: none;
     color: black;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+   text-align: center;
+}
+
 
 /* Buttons */
 .red-button {
@@ -44,6 +50,47 @@ a {
     color: white;
     border: 1px solid red;
 }
+
+.green-button {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    background-color:rgba(144,238,144);
+    width: 200px;
+    height: 40px;
+    padding: 0.45rem;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+    text-align: center;
+    font-size: 1.25rem;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+}
+.green-button:hover {
+    background-color: lightgreen;
+    color: white;
+    border: 1px solid lightgreen;
+}
+
+.blue-button {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+    background-color: lightblue;
+    width: 200px;
+    height: 40px;
+    padding: 0.45rem;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+    text-align: center;
+    font-size: 1.25rem;
+}
+.blue-button:hover {
+    background-color: lightblue;
+    color: white;
+}
+
 .black-button {
     text-decoration: none;
     font-size: 1.25rem;
@@ -76,18 +123,27 @@ a {
     transform: rotate(360deg);
 }
 
+.small-button {
+    width: 50px;
+    border-radius: 5px;
+}
 /* Colors */
 .background-grey {
  background-color: #f5f5f5;
 }
 .background-blue {
- background-color: skyblue;
+ background-color: #87CEEB;
+ color: white;
 }
 .background-pink {
     background-color: #D43C61;
 }
 .white {
     color: white;
+}
+
+.grey {
+    color: grey;
 }
 
 /* Shape */
@@ -109,6 +165,7 @@ h2 + p.alert {
 h2 + p.alert-success {
     background-color: green;
     color: white;
+    font-size: 1.5rem;
 }
 h2 +  p.alert-error {
     background-color: red;
@@ -213,8 +270,14 @@ h2 +  p.alert-error {
 }
 .wrapper p {
     font-size: 1.5rem;
-    color: grey;
     margin-bottom: 1rem;
+}
+
+.wrapper-50 {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    padding: 5rem 0;
 }
 
 /* Service */
@@ -276,27 +339,23 @@ h2 +  p.alert-error {
 }
 
 /* Contact */
-.contact, .contact p {
-    background-color: #87CEEB;
-    color: white;
-}
-.contact .container form {
+.form .container form {
     width: 70%;
     margin: 0 auto;
 }
-.contact .form-group {
+.form .form-group {
     margin: 2rem 0;
     text-align: left;
 }
-.contact  label {
+.form  label {
     font-weight: bold;
     display: block;
 }
-.contact label::after {
+.form label::after {
     content: ' *'
 }
-.contact input:not(.black-button),
-.contact textarea {
+.form input:not(.black-button),
+.form textarea {
     background-color: #ffffff;
     border: none;
     color: #444;
@@ -306,13 +365,23 @@ h2 +  p.alert-error {
     height: 2.75em;
     outline: none;
 }
-.contact .form-control:focus {
+.form .form-control:focus {
     background-color:   #f5f5f5;
     border: 1px solid lightgrey;
 }
-.contact textarea {
+.form textarea {
     height: 200px;
     padding-top: 0.5rem;
+}
+
+input[type="email"] + p.caption {
+    font-style: italic;
+    color: red;
+    font-size: .9rem;
+}
+
+input[type="number"] {
+    width: 40px;
 }
 
 /* Footer */
@@ -355,15 +424,25 @@ h2 +  p.alert-error {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0 0 2em 0;
+    margin: 2rem 0;
+    border: 1px solid rgba(144, 144, 144, 0.25);
+}
+
+caption {
+    padding: 0.75rem 0.75rem;
+    font-size: 1.5rem;
+    background-color: rgba(144, 144, 144, 0.075);
+    border: 1px solid rgba(144, 144, 144, 0.25); 
+    text-align: left;
 }
 
 table th {
     color: #474747;
-    font-size: 0.9em;
-    font-weight: 700;
-    padding: 0 0.75em 0.75em 0.75em;
+    font-size: 1.1rem;
     text-align: left;
+    vertical-align: middle;
+    text-transform: uppercase;
+    padding: 0.75rem 0.75rem;
 }
 
 table tbody tr {
@@ -372,7 +451,7 @@ table tbody tr {
     border-right: 0;
 }
 
-table tbody tr:nth-child(odd) {
+table tbody tr:nth-child(odd), table tfoot tr {
     background-color: rgba(144, 144, 144, 0.075);
 }
 
@@ -380,6 +459,17 @@ table tbody td {
     padding: 0.75rem 0.75rem;
     text-align: left;
 
+}
+
+table tfoot th {
+    text-align: right;
+    vertical-align: middle;
+    font-size: 1.5rem;
+}
+
+table tfoot td {
+    padding: 0.75rem 0.75rem;
+    text-align: left;
 }
 
 ul.product-types-links {
@@ -390,6 +480,9 @@ ul.product-types-links li {
     display: inline-block;
 }
 
+p.info-order {
+    font-size: 1rem;
+}
 
 @media screen and (max-width: 900px) {
     .red-button {
@@ -486,7 +579,7 @@ ul.product-types-links li {
     }
 
     /* Contact */
-    .contact .container form {
+    .form .container form {
         width: 90%;
     }
 
