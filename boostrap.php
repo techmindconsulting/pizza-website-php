@@ -1,6 +1,9 @@
 <?php
-    require 'config/parameters.php';
-    require 'src/scripts/service/function.php'; 
-    require 'src/scripts/model/product.php';
-    require 'src/scripts/service/mailer.php';
-    require 'src/scripts/database.php';
+    require_once 'config/parameters.php';
+    require_once 'src/scripts/service/function.php'; 
+    require_once 'src/scripts/model/product.php';
+    require_once 'src/scripts/model/order.php';
+    require_once 'src/scripts/model/user.php';
+    require_once 'src/scripts/service/mailer.php';
+    require_once 'src/scripts/service/cart.php';
+    require_once 'src/scripts/database.php';

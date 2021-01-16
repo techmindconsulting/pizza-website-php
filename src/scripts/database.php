@@ -1,8 +1,6 @@
 <?php
-ob_start();
 $connexion = null;
 $message = '';
-
 if (MAINTENANCE_MODE) {
     header('Location:maintenance.php');
 }

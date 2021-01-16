@@ -1,3 +1,6 @@
+<?php 
+    ob_start();
+?>
 <meta charset="utf-8">
 <meta name="description" content="Pizza ouvert 7J/7, profitez d'une soirée en famillle ou entre amis pour déguster l'une des meilleure pizza de Marseille. Toutes nos commandes se font en livraison ou à emporter.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,4 +36,8 @@ crossorigin="anonymous" />
 
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/animation.css">
-<?php include 'boostrap.php'; ?>
+<?php 
+    include 'boostrap.php'; 
+    ob_get_contents();
+?>
+

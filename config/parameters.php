@@ -25,5 +25,8 @@
     define('ADMIN_EMAIL', 'saidi@yopmail.com');
     define('ADMIN_NAME', 'saidi');
 
-
     define("MAINTENANCE_MODE", false);
+
+    define("PAYMENT_STATUS_PENDING", 'Commande en attente');
+    define("PAYMENT_STATUS_PAID", 'Commande réglé');
+    define("PAYMENT_STATUS_CANCELLED", 'Commande annulé');
