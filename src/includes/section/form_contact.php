@@ -1,4 +1,4 @@
-<section id="contact" class="wrapper contact">
+<section id="contact" class="wrapper background-blue">
     <div class="container form">
         <h2>Contact</h2>
         <?php 
@@ -11,7 +11,7 @@
                     <p class="alert alert-error">Un problème a eu lieu lors de l'envoi d'email, merci de contacter le support.</p>
         <?php   } ?>
 
-        <p>Envoyez nous vos messages, nous serons heureux de vous répondre!</p>
+        <p class="white">Envoyez nous vos messages, nous serons heureux de vous répondre!</p>
         <form name="contact-form" method="POST" action="src/scripts/action/send_mail.php">
             <div class="form-group">
                 <label for="lastname">Nom</label>
