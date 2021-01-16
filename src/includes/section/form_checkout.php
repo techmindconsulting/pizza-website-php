@@ -82,9 +82,6 @@
                         document.querySelector('p.caption').innerText = 'Email deja existante';
                     } else {
                         document.getElementById('email').style.border = '2px solid green';
-                        document.getElementById('email').addEventListener('focus', function () {
-                            this.style.border = '1px solid lightgrey';
-                        });
                         document.getElementById('checkout').removeAttribute("disabled");
                         document.querySelector('p.caption').innerText = '';
                     }
