@@ -5,6 +5,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once '../../../boostrap.php';
 
+if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+    header('Location:../../../carte.php');
+    die;
+}
+
 if (!empty($_POST['quantity'])) {
     $product = getProduct($_POST['product_id']);  
     if (empty($_SESSION['cart_item'][$product['id']])) {

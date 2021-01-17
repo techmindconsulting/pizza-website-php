@@ -53,12 +53,12 @@
                     <tfoot>
                         <tr>
                             <th colspan="4">Total</th>
-                            <td><?= array_sum(array_column($orderItems, 'total')); ?> €</td>
+                            <td><?= computeTotalOrder($orderItems); ?> €</td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
-            <p>Bonne apétit</p>
+            <p>Bon Appétit</p>
         </div>
     </section>
     <?php include 'src/includes/shared/footer.php'; ?>

@@ -8,5 +8,5 @@
     </p>
     <p class="info"></p>    
     <a class="red-button" 
-    href="<?= WHATSAPP_API . '?phone='. WHATSAPP_API_PARAM_PHONE . '&text='. WHATSAPP_API_PARAM_MESSAGE ?>">Commander</a>
+    href="carte.php">Commander</a>
 </div>
