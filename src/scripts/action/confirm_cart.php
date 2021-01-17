@@ -4,9 +4,11 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once '../../../boostrap.php';
-require_once '../model/product.php';
-require_once '../model/user.php';
-require_once '../model/order.php';
+
+if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+    header('Location:../../../carte.php');
+    die;
+}
 
 $isValid =  isValidForm($_POST);
 
@@ -15,11 +17,12 @@ if ($isValid) {
 
     $userId = createUser($data);
     $data['cart_total'] = computeTotalOrder($data['cart_item']);
-    $orderId = createOrder($userId, $data);
-    createOrderItem($orderId, $data);
+    $data['order_id'] = createOrder($userId, $data);
+    createOrderItem($data);
+    sendConfirmationOrder($data);
 
     unset($_SESSION['cart_item']);
-    
-    header('Location:../../../confirmation.php?confirm=ok&order_id='.$orderId);
+        
+    header('Location:../../../confirmation.php?confirm=ok&order_id='.$data['order_id']);
 }
 die;

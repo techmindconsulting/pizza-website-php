@@ -3,8 +3,8 @@
 function getProductTypes() : array
 {
     global $connexion;
-
-    $statement = $connexion->prepare('SELECT * FROM product_type');
+    $sql = 'SELECT * FROM product_type';
+    $statement = $connexion->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
     
@@ -14,8 +14,8 @@ function getProductTypes() : array
 function getProducts(int $productId) : array
 {
     global $connexion;
-
-    $statement = $connexion->prepare('SELECT * FROM product WHERE product_type_id = :id');
+    $sql = 'SELECT * FROM product WHERE product_type_id = :id';
+    $statement = $connexion->prepare($sql);
     $statement->bindParam(':id', $productId, PDO::PARAM_INT);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -26,8 +26,8 @@ function getProducts(int $productId) : array
 function getProduct(int $productId) : ?array
 {
     global $connexion;
-
-    $statement = $connexion->prepare('SELECT * FROM product WHERE id = :id');
+    $sql = 'SELECT * FROM product WHERE id = :id';
+    $statement = $connexion->prepare($sql);
     $statement->bindParam(':id', $productId, PDO::PARAM_INT);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -38,7 +38,8 @@ function getProduct(int $productId) : ?array
 function getProductType(int $productTypeId, string $columnn = 'type') : string 
 {
     global $connexion;
-    $statement = $connexion->prepare('SELECT '. $columnn .' FROM product_type where id = :id');
+    $sql = 'SELECT '. $columnn .' FROM product_type where id = :id';
+    $statement = $connexion->prepare($sql);
     $statement->bindParam(':id', $productTypeId, PDO::PARAM_INT);
     $statement->execute();
     $result = $statement->fetch();

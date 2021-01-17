@@ -1,9 +1,13 @@
 <?php
-require '../service/function.php';
-require '../service/mailer.php';
+
+require_once '../../../boostrap.php';
+
+if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+    header('Location:../../../index.php');
+    die;
+}
 
 $isValid =  isValidForm($_POST);
-
 if ($isValid) {
     $hasSent = sendContactMail($_POST['firstname'], 
     $_POST['lastname'], 

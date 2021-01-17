@@ -26,7 +26,7 @@ function createOrder(int $userId, array $data): int
     }
 }
 
-function createOrderItem(int $orderId, array $data): void 
+function createOrderItem(array $data): void 
 {    
     try {
         global $connexion;
@@ -35,12 +35,14 @@ function createOrderItem(int $orderId, array $data): void
         $statement = $connexion->prepare($sql);
         $connexion->beginTransaction();
 
+        $orderId = $data['order_id'];
         foreach($data['cart_item']  as $productId => $item) {
             $statement->bindParam(':order_id', $orderId);
             $statement->bindParam(':product_id', $productId);
             $statement->bindParam(':quantity', $item['quantity']);
             $statement->execute();
         }
+        
         $connexion->commit();        
     } catch(Exception $exception) {
         echo $exception->getMessage();

@@ -5,12 +5,6 @@ if (session_status() == PHP_SESSION_NONE) {
 ?>
 <section class="service wrapper background-grey">
     <div class="container">
-        <?php
-            if (isset($_SESSION['cart_item'])) {
-                $nbItemsQuantity = array_sum(array_column ($_SESSION['cart_item'], 'quantity')); 
-            } 
-        ?>
-       
         <h2>La carte</h2>
         <p><?= getProductType($_GET['product-type-id'], 'description'); ?></p>
         <p>
@@ -24,11 +18,8 @@ if (session_status() == PHP_SESSION_NONE) {
                 </li>
             </ul>
         </p>
-        
-        <?php if (isset($_SESSION['cart_item']) && !empty($_SESSION['cart_item'])) { ?>
-            <a class="blue-button" href="shopping_cart.php">  <i class="fas fa-shopping-cart"></i> <span><?=  $nbItemsQuantity?> produit(s)</span></a>
-        <?php } ?>
-
+        <!-- Button to display shopping cart page -->
+        <?php include 'src/includes/shared/button_cart.php' ?>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -42,7 +33,6 @@ if (session_status() == PHP_SESSION_NONE) {
                 <tbody>
             <?php 
                 $products = getProducts($_GET['product-type-id']);
-
                 if (!empty($products)) {
                     foreach($products as $product) { 
                         ?>
@@ -51,8 +41,8 @@ if (session_status() == PHP_SESSION_NONE) {
                             <td><?= $product['description']; ?></td>
                             <td><?= $product['price']; ?>€</td>
                             <td>
-                                <form action="src/scripts/action/add_cart.php" method="post">
-                                    <input type="number" class="product-quantity" name="quantity" value="1" min="1" max="9">
+                                <form action="src/scripts/action/add_cart.php?action=add" method="post">
+                                    <input type="number" class="product-quantity" name="quantity" value="1" min="1">
                                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                                     <button type="submit" class="green-button small-button"><i class="fas fa-cart-plus"></i></button>
                                 </form>
@@ -63,9 +53,8 @@ if (session_status() == PHP_SESSION_NONE) {
         <?php   }  ?>
                 </tbody>
         </table>
-        <?php if (isset($_SESSION['cart_item']) && !empty($_SESSION['cart_item'])) { ?>
-            <a class="blue-button" href="shopping_cart.php">  <i class="fas fa-shopping-cart"></i> Voir panier <span><?=  $nbItemsQuantity?></span></a>
-        <?php } ?>
+        <!-- Button to display shopping cart page -->
+        <?php include 'src/includes/shared/button_cart.php' ?>
         </div>
     </div>
 </section>

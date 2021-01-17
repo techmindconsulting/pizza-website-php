@@ -22,12 +22,22 @@
                 <p class="caption"></p>
             </div>
             <div class="form-group">
+                <label for="phone">Téléphone</label>
+                <input class="form-control" 
+                type="tel" 
+                id="phone"
+                name="phone" 
+                placeholder="Numéro de téléphone" 
+                pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
+                required>
+            </div>
+            <div class="form-group">
                 <label for="email">Mot de passe</label>
                 <input class="form-control" type="password" id="password" name="password" placeholder="Mot de passe" required>
             </div>
         </form>
         <table>
-            <caption><i class="fas fa-shopping-cart"></i> Votre panier : <span> <?= array_sum(array_column($_SESSION['cart_item'], 'total')); ?> </span>€</caption>
+            <caption><i class="fas fa-shopping-cart"></i> Votre panier : <span> <?= computeTotalOrder($_SESSION['cart_item']); ?> </span>€</caption>
             <thead>
                 <tr>
                     <th>Type de produit</th>
@@ -48,12 +58,11 @@
                             <td><?= $item['price'] * $item['quantity'] ?> €</td>
                         </tr>
             <?php   } ?>
-                </tr>
             </tbody>
             <tfoot>
                 <tr>
                     <th colspan="4">Total</th>
-                    <td><?= array_sum(array_column($_SESSION['cart_item'], 'total')); ?> €</td>
+                    <td><?= computeTotalOrder($_SESSION['cart_item']) ?> €</td>
                 </tr>
             </tfoot>
         </table>
@@ -79,7 +88,7 @@
                     if (result.exists) {
                         document.getElementById('email').style.border = '2px solid red';
                         document.getElementById('checkout').disabled = true;
-                        document.querySelector('p.caption').innerText = 'Email deja existante';
+                        document.querySelector('p.caption').innerText = 'Email deja existant';
                     } else {
                         document.getElementById('email').style.border = '2px solid green';
                         document.getElementById('checkout').removeAttribute("disabled");
