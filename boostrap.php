@@ -6,5 +6,9 @@
     require_once 'src/scripts/model/user.php';
     require_once 'src/scripts/service/mailer.php';
     require_once 'src/scripts/service/cart.php';
+    require_once 'src/scripts/service/auth.php';
+    require_once 'src/scripts/service/order.php';
     require_once 'src/scripts/service/debug.php';
+    require_once 'src/scripts/service/flashMessage.php';
+    require_once 'src/scripts/service/csrf.php';
     require_once 'src/scripts/database.php';

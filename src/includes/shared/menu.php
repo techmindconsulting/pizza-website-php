@@ -10,11 +10,28 @@
                      >Service</a></li>
                 <li><a href="index.php#localisation">Plan d'accès</a></li>
                 <li><a href="index.php#contact">Contact</a></li>
-                <li><a href="carte.php" 
-                <?php 
-                    if ($currentPage === 'contact') { ?> 
+                <li><a href="carte.php" <?php
+                        if($currentPage === 'carte') { ?>
                         class="active"
-                <?php } ?>>La carte</a></li>
+                <?php   }
+                ?>>La carte</a></li>
+                <li>
+                    <?php 
+                        $link = isset($_SESSION['auth']['logged']) ? 'profile.php' : 'login.php'; 
+                        $class = $currentPage === 'login' ? 'active' : '';
+                    ?>
+
+                    <a href="<?=$link ?>"  class="<?=$class?>">
+                        <?php 
+                            if (isset($_SESSION['auth']['logged'])) {
+                                echo 'Mon compte';
+                            } else {
+                                echo 'Se connecter';
+                            }
+                        ?>
+                    </a>
+                </li>
+                
             </ul>
         </nav>
     </div>
@@ -32,7 +49,27 @@
             <li><a href="index.php#service">Service</a></li>
             <li><a href="index.php#localisation">Plan</a></li>
             <li><a href="index.php#contact">Contact</a></li>
-            <li><a href="carte.php">La carte</a></li>
+            <li><a href="carte.php" <?php
+                        if($currentPage === 'carte') { ?>
+                        class="active"
+                <?php   }
+                ?>>La carte</a></li>
+                <li>
+                    <?php 
+                        $link = isset($_SESSION['auth']['logged']) ? 'profile.php' : 'login.php'; 
+                        $class = $currentPage === 'login' ? 'active' : '';
+                    ?>
+
+                    <a href="<?=$link ?>"  class="<?=$class?>">
+                        <?php 
+                            if (isset($_SESSION['auth']['logged'])) {
+                                echo 'Mon compte';
+                            } else {
+                                echo 'Se connecter';
+                            }
+                        ?>
+                    </a>
+                </li>
         </ul>
     </nav>
 </div>

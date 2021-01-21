@@ -12,16 +12,10 @@
     <section id="contact" class="wrapper background-grey">
         <div class="container">
             <h2>Merci pour votre commande</h2>
-            <?php
-            if (isset($_GET['confirm']) && $_GET['confirm'] === 'ok') { 
-                        $orderId = isset($_GET['order_id']) ? $_GET['order_id'] : null;
-                        ?>
-                        <p class="alert alert-success"><i class="fas fa-hamburger"></i> Voici votre numéro de commande <?= $orderId; ?></p>
-            <?php   } ?>
             <?php 
-                    if (isset($_GET['confirm']) && $_GET['confirm'] === 'ko') { ?>
-                        <p class="alert alert-error">Un problème a eu lieu lors de la commande, merci de contacter le support.</p>
-            <?php   } ?>
+                $orderId = $_GET['order_id'] ?? $_GET['order_id']; 
+                getFlash('confirm-cart');
+            ?>
             <?php $orderItems = getOrderItems($orderId); ?>
             <p><?= CONTACT_ADDRESS ?></p>
             <p><?= CONTACT_PHONE ?></p>

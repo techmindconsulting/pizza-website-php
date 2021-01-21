@@ -2,8 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
-//var_dump($_SESSION['cart_item']); 
 ?>
 
 <section class="service wrapper background-grey">
@@ -50,7 +48,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 <tfoot>
                     <tr>
                         <th colspan="4">Total</th>
-                        <td><?= array_sum(array_column($_SESSION['cart_item'], 'total')); ?> €</td>
+                        <td><?= computeTotalOrder($_SESSION['cart_item']); ?> €</td>
                         <td></td>
                     </tr>
                 </tfoot>

@@ -7,35 +7,51 @@
     <div class="container form">
         <h2>Validation du panier</h2>
 
-        <form id="checkout-form" name="checkout-form" method="POST" action="src/scripts/action/confirm_cart.php">
-            <div class="form-group">
-                <label for="fullname">Nom complet</label>
-                <input class="form-control" type="text" id="fullname" name="fullname" placeholder="Nom complet" required>
-            </div>
-            <div class="form-group">
-                <label for="address">Addresse complete</label>
-                <input class="form-control" type="text" id="address" name="address" placeholder="Addresse complete" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" type="email" id="email" name="email" placeholder="Email" required onkeyUp=checkEmail(this.value) >
-                <p class="caption"></p>
-            </div>
-            <div class="form-group">
-                <label for="phone">Téléphone</label>
-                <input class="form-control" 
-                type="tel" 
-                id="phone"
-                name="phone" 
-                placeholder="Numéro de téléphone" 
-                pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
-                required>
-            </div>
-            <div class="form-group">
-                <label for="email">Mot de passe</label>
-                <input class="form-control" type="password" id="password" name="password" placeholder="Mot de passe" required>
-            </div>
-        </form>
+        <?php if (!isset($_SESSION['auth']['logged'])) { ?>   
+            <form id="checkout-form" name="checkout-form" method="POST" 
+            action="src/scripts/action/confirm_cart.php">
+                <div class="form-group">
+                    <label for="fullname">Nom complet</label>
+                    <input class="form-control" type="text" id="fullname" name="fullname" placeholder="Nom complet" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Addresse complete</label>
+                    <input class="form-control" type="text" id="address" name="address" placeholder="Addresse complete" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Email" required onkeyUp=checkEmail(this.value) >
+                    <p class="caption"></p>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input class="form-control" 
+                    type="tel" 
+                    id="phone"
+                    name="phone" 
+                    placeholder="Numéro de téléphone" 
+                    pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
+                    required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Mot de passe</label>
+                    <input class="form-control" type="password" id="password" name="password" placeholder="Minimum de 4 caractères" minlength="4" required>
+                </div>
+            </form>
+        <?php } else {  ?>
+                <form id="checkout-form" 
+                    name="checkout-form" 
+                    method="POST" 
+                    action="src/scripts/action/confirm_cart.php">
+                        
+                    <input 
+                        type="hidden" 
+                        id="email" 
+                        name="email" 
+                        value="<?= $_SESSION['auth']['user']['email'] ?>">
+                </form>
+            <?php } ?>
+
         <table>
             <caption><i class="fas fa-shopping-cart"></i> Votre panier : <span> <?= computeTotalOrder($_SESSION['cart_item']); ?> </span>€</caption>
             <thead>
@@ -69,7 +85,7 @@
         <div class="shopping-cart-action">
             <p class="info-order">Précisez votre numéro de commande au compteur lors du retrait.</p>
             <a class="blue-button" href="carte.php?product-type-id=2">  <i class="fas fa-shopping-cart"></i> Retour  <span></span></a>
-            <button id="checkout" class="green-button" type="submit" form="checkout-form"><i class="fas fa-money-bill"></i> Payer <?= array_sum(array_column($_SESSION['cart_item'], 'total')); ?> € </button>
+            <button id="checkout" class="green-button" type="submit" form="checkout-form"><i class="fas fa-money-bill"></i> Payer <?= computeTotalOrder($_SESSION['cart_item']); ?> € </button>
         </div>
     </div>
 </section>

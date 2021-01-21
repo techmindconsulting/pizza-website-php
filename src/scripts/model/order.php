@@ -7,7 +7,7 @@ function createOrder(int $userId, array $data): int
 
         $sql = "INSERT INTO `order` (user_id, ordered_at, status, total) VALUES (:user_id, :ordered_at, :status, :total)";
 
-        $status = PAYMENT_STATUS_PENDING;
+        $status = "PAYMENT_STATUS_PENDING";
         $orderedAt = (new DateTime())->format('Y-m-d H:i:s');
         $statement = $connexion->prepare($sql);
 
@@ -50,7 +50,7 @@ function createOrderItem(array $data): void
     }
 }
 
-function getOrderItems($id)
+function getOrderItems(int $id)
 {
     global $connexion;
 
@@ -68,4 +68,33 @@ function getOrderItems($id)
     $statement->execute();
 
     return $statement->fetchAll();
+}
+
+function getOrders(int $userId)
+{
+    global $connexion;
+
+    $sql = "SELECT * FROM `order` WHERE user_id = :user_id ORDER BY ordered_at desc";
+
+    $statement = $connexion->prepare($sql);
+    $statement->bindParam(':user_id', $userId);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+
+    $statement->execute();
+
+    return $statement->fetchAll();
+}
+
+function updateOrderStatus(int $id, string $status) : void
+{
+    global $connexion;
+
+    $sql = "UPDATE `order` SET status = :status WHERE id = :order_id";
+    $statement = $connexion->prepare($sql);
+
+    $statement->bindParam(':status', $status);
+    $statement->bindParam(':order_id', $id);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+
+    $statement->execute();
 }
