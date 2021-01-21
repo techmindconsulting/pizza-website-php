@@ -18,3 +18,11 @@ function showSession(bool $die = false) : void
         die;
     }
 }
+
+function showGlobals(bool $die = false) : void
+{
+    var_dump($GLOBALS);
+    if ($die) {
+        die;
+    }
+}

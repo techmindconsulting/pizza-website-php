@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../../boostrap.php';
+require_once '../../boostrap.php';
 
 $email = $_GET['email'] ?? $_GET['email'];
 $isExists = ['exists' => false, 'email' => $email];

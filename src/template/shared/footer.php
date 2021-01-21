@@ -29,3 +29,11 @@
     </div>
     <p class="copyright">© Pizza Billy - Pizzeria <?= date('Y'); ?></p>
 </footer>
+<script>
+    if (null !== document.getElementById('flash-message')) {
+        document.getElementById('flash-message').addEventListener("click", function(event) {
+            let p = document.getElementById('flash-message');
+            p.style.display = "none";
+        });
+    }
+</script>

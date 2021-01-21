@@ -19,7 +19,7 @@ if (session_status() == PHP_SESSION_NONE) {
             </ul>
         </p>
         <!-- Button to display shopping cart page -->
-        <?php include 'src/includes/shared/button_cart.php' ?>
+        <?php include 'src/template/shared/button_cart.php' ?>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -41,7 +41,7 @@ if (session_status() == PHP_SESSION_NONE) {
                             <td><?= $product['description']; ?></td>
                             <td><?= $product['price']; ?>€</td>
                             <td>
-                                <form action="src/scripts/action/add_cart.php?action=add" method="post">
+                                <form action="src/action/add_cart.php?action=add" method="post">
                                     <input type="number" class="product-quantity" name="quantity" value="1" min="1">
                                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                                     <button type="submit" class="green-button small-button"><i class="fas fa-cart-plus"></i></button>
@@ -54,7 +54,7 @@ if (session_status() == PHP_SESSION_NONE) {
                 </tbody>
         </table>
         <!-- Button to display shopping cart page -->
-        <?php include 'src/includes/shared/button_cart.php' ?>
+        <?php include 'src/template/shared/button_cart.php' ?>
         </div>
     </div>
 </section>

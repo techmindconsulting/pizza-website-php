@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../../boostrap.php';
+require_once '../../boostrap.php';
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
     header('Location:../../../carte.php');
@@ -29,8 +29,8 @@ if (!empty($_POST['quantity'])) {
 }
 
 if ($_GET['action'] !== 'update') {
-    header('Location:../../../carte.php?product-type-id='. $product['product_type_id']);
+    header('Location:../../carte.php?product-type-id='. $product['product_type_id']);
 } else {
-    header('Location:../../../shopping_cart.php');
+    header('Location:../../shopping_cart.php');
 }
 die;

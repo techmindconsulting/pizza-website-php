@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <?php include 'src/includes/shared/head.php'; ?>
+        <?php include 'src/template/shared/head.php'; ?>
     </head>
     <body>
     <header id="header" class="header">
         <?php 
         $currentPage = 'contact'; 
-        include 'src/includes/shared/menu.php'; ?>
+        include 'src/template/shared/menu.php'; ?>
     </header>
     <section id="contact" class="wrapper background-grey">
         <div class="container">
             <h2>Merci pour votre commande</h2>
-            <?php
-            if (isset($_GET['confirm']) && $_GET['confirm'] === 'ok') { 
-                        $orderId = isset($_GET['order_id']) ? $_GET['order_id'] : null;
-                        ?>
-                        <p class="alert alert-success"><i class="fas fa-hamburger"></i> Voici votre numéro de commande <?= $orderId; ?></p>
-            <?php   } ?>
             <?php 
-                    if (isset($_GET['confirm']) && $_GET['confirm'] === 'ko') { ?>
-                        <p class="alert alert-error">Un problème a eu lieu lors de la commande, merci de contacter le support.</p>
-            <?php   } ?>
+                $orderId = $_GET['order_id'] ?? $_GET['order_id']; 
+                getFlash('confirm-cart');
+            ?>
             <?php $orderItems = getOrderItems($orderId); ?>
             <p><?= CONTACT_ADDRESS ?></p>
             <p><?= CONTACT_PHONE ?></p>
@@ -59,9 +53,10 @@
                 </table>
             </div>
             <p>Bon Appétit</p>
+            <a href="profile.php" class="black-button">Mon compte</a>
         </div>
     </section>
-    <?php include 'src/includes/shared/footer.php'; ?>
-    <?php include 'src/includes/shared/button_whatsapp.php'; ?>
+    <?php include 'src/template/shared/footer.php'; ?>
+    <?php include 'src/template/shared/button_whatsapp.php'; ?>
     </body>
 </html>
