@@ -73,7 +73,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 
 ## 2. Description 
 
-- [assets] : Ressources Web statiques comme les fichiers CSS, JavaScript et image
+- [assets] : Ressources web statiques comme les fichiers CSS, javaScript et images
 
 - [config] : Fichiers utiles à la configuration du projet
 
@@ -81,16 +81,23 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     - [shared] Commune à toute les pages
     - [section] Portions de page plus spécifique
 
-- [src/scripts] :  Traitement métiers appélé par les portions de page
+- [src] : Traitement métiers appélé par les actions et portions de page
+    - [action] : fonction d'action utilisateurs (formulaires)
+    - [model] : fonction communiquant avec la base de donnnée
+    - [service] : fonction de traitement spécifique
+    - [template] : sous gabarits de page inclus depuis les pages
 
-- [sql] : Base de données SQL
+- [data] : Base de données SQL
 
 - boostrap.php : Fichier de chargement de toutes les dépendances nécéssaires à l'éxécution du site.
-
 - carte.php : Page affichant la liste des produits et type de produits
-
+- checkout.php : Validation du panier
+- confirmation.php : Page de confirmation une fois le panier validé 
 - index.php : Page d'acceuil
+- login.php : Page de connexion
 - maintenance.php : Page de maintenance
+- profile.php : Page de profil et de commande réservé aux utilisateurs authentifiés
+- shopping_cart.php : Page d'affichage du panier
 
 ## 3. Notions abordées
 
