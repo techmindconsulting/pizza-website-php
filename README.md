@@ -14,29 +14,60 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     │   └── pdf
     ├── config/
     │   └── parameters.php
-    ├── src/
-    │   ├── includes/
-    │   │   ├── section/
-    │   │   │   ├── form_contact.php
-    │   │   │   ├── map.php
-    │   │   │   ├── product.php
-    │   │   │   ├── product_type.php
-    │   │   │   └── service.html
-    │   │   └── shared/
-    │   │       ├── button_whatsapp.php
-    │   │       ├── footer.php
-    │   │       ├── head.php
-    │   │       └── menu.php
-    │   └── scripts/
-    │       ├── function.php
-    |       ├── mailer.php
-    │       ├── database.php
-    │       └── send_email.php
-    ├── sql/
+    ├── data/
     │   └── db.sql
+    ├── src/
+    │   ├── action/
+    │   │   ├── add_cart.php
+    │   │   ├── update_status_order.php
+    │   │   ├── check_email_exists.php
+    │   │   ├── confirm_cart.php
+    │   │   ├── login.php
+    │   │   ├── remove_cart.php
+    │   │   └── send_contact_mail.php
+    │   ├── model/
+    │   │   ├── order.php
+    │   │   ├── product.php
+    │   │   ├── user.php
+    │   │   └── database.php
+    │   ├── service/
+    │   │   ├── auth.php
+    │   │   ├── cart.php
+    │   │   ├── csrf.php
+    │   │   ├── debug.php
+    │   │   ├── flahMessage.php
+    │   │   ├── mailer.php
+    │   │   ├── order.php
+    │   │   └── validation.php
+    │   └── template/
+    │       ├── section/
+    │       │   ├── account.php
+    │       │   ├── cart_item.php
+    │       │   ├── form_checkout.php
+    │       │   ├── form_contact.php
+    │       │   ├── form_login.php
+    │       │   ├── map.php
+    │       │   ├── product_type.php
+    │       │   ├── product.php
+    │       │   ├── service.html
+    │       │   └── table_orders.php
+    │       └── shared/
+    │           ├── banner.php
+    │           ├── button_cart.php
+    │           ├── button_shopping_cart.php
+    │           ├── button_whatsapp.php
+    │           ├── footer.php
+    │           ├── head.php
+    │           └── menu.php
     ├── bootstrap.php
     ├── carte.php
-    └── index.php
+    ├── checkout.php
+    ├── confirmation.php
+    ├── index.php
+    ├── login.php
+    ├── maintenance.php
+    ├── profile.php
+    └── shopping_cart.php
     
 ``` 
 
