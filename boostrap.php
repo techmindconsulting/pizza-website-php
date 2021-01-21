@@ -11,4 +11,4 @@
     require_once 'src/service/debug.php';
     require_once 'src/service/flashMessage.php';
     require_once 'src/service/csrf.php';
-    require_once 'src/script/database.php';
+    require_once 'src/model/database.php';

@@ -27,6 +27,6 @@
 
     define("MAINTENANCE_MODE", false);
 
-    define("PAYMENT_STATUS_PENDING", 'Commande en attente');
-    define("PAYMENT_STATUS_PAID", 'Commande réglé');
-    define("PAYMENT_STATUS_CANCELLED", 'Commande annulé');
+    define("PAYMENT_STATUS_PENDING", 'PAYMENT_STATUS_PENDING');
+    define("PAYMENT_STATUS_PAID", 'PAYMENT_STATUS_PAID');
+    define("PAYMENT_STATUS_CANCELLED", 'PAYMENT_STATUS_CANCELLED');

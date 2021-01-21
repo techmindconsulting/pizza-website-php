@@ -29,10 +29,11 @@
             <h2>Mon compte </h2>
             <?php 
                 getFlash('login');
-                getFlash('cancel_order');
+                getFlash('status_order');
             ?>
             
             <?php include 'src/template/section/account.php'; ?>
+            <a href="carte.php" class="black-button" style="width:auto">Nouvelle commande</a>
             <?php include 'src/template/section/table_orders.php'; ?>
         </div>
     </section>

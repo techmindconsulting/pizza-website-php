@@ -53,6 +53,7 @@
                 </table>
             </div>
             <p>Bon Appétit</p>
+            <a href="profile.php" class="black-button">Mon compte</a>
         </div>
     </section>
     <?php include 'src/template/shared/footer.php'; ?>
