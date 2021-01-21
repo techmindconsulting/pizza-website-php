@@ -9,7 +9,7 @@
 
         <?php if (!isset($_SESSION['auth']['logged'])) { ?>   
             <form id="checkout-form" name="checkout-form" method="POST" 
-            action="src/scripts/action/confirm_cart.php">
+            action="src/action/confirm_cart.php">
                 <div class="form-group">
                     <label for="fullname">Nom complet</label>
                     <input class="form-control" type="text" id="fullname" name="fullname" placeholder="Nom complet" required>
@@ -42,7 +42,7 @@
                 <form id="checkout-form" 
                     name="checkout-form" 
                     method="POST" 
-                    action="src/scripts/action/confirm_cart.php">
+                    action="src/action/confirm_cart.php">
                         
                     <input 
                         type="hidden" 
@@ -112,7 +112,7 @@
                     }
                 }
             }
-            xmlHttp.open('GET', 'src/scripts/action/check_email_exists.php?email=' + data, true);
+            xmlHttp.open('GET', 'src/action/check_email_exists.php?email=' + data, true);
             xmlHttp.send();
         }
     }

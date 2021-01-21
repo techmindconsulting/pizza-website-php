@@ -1,9 +1,9 @@
 <?php
 
-require_once '../../../boostrap.php';
+require_once '../../boostrap.php';
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
-    header('Location:../../../account.php');
+    header('Location:../../profile.php');
     die;
 }
 
@@ -12,5 +12,5 @@ if (!hasValidToken('cancel_order_'.$_POST['order_id'])) {
 }
 
 updateOrderStatus($_POST['order_id'], 'PAYMENT_STATUS_CANCELLED');
-
-header('Location:../../../account.php');
+setFlash('cancel_order', 'La commande a bien été annulée', 'alert-success');
+header('Location:../../profile.php');

@@ -4,10 +4,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../../boostrap.php';
+require_once '../../boostrap.php';
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
-    header('Location:../../../carte.php');
+    header('Location:../../carte.php');
     die;
 }
 
@@ -19,11 +19,11 @@ if ($hasValidForm && $hasValidEmail) {
 
    if(login($email,$_POST['password'])) {
        setFlash("login","Authentification OK", "alert-success");
-       header('Location:../../../account.php');
+       header('Location:../../profile.php');
        die;
    }
 }
 
 setFlash("login","Email ou mot de passe incorrect", "alert-error");
-header('Location:../../../login.php');
+header('Location:../../login.php');
 die;

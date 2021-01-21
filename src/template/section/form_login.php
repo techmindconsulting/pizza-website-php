@@ -4,7 +4,7 @@
         <?php 
                 getFlash('login');
         ?>
-        <form id="login-form" name="login-form" method="POST" action="src/scripts/action/login.php">
+        <form id="login-form" name="login-form" method="POST" action="src/action/login.php">
             <div class="form-group">
                 <label for="fullname">Email</label>
                 <input class="form-control" type="text" id="email" name="email" placeholder="Merci de saisir votre email" required>

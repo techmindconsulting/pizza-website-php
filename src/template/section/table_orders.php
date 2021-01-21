@@ -14,7 +14,7 @@
                     $link = "profile.php?order_id={$order['id']}";
                     ?>
                     <tr>
-                        <td><a href="<?= $link ?>"><?= $order['id']; ?></a></td>
+                        <td><a class="order-id" href="<?= $link ?>"><?= $order['id']; ?></a></td>
                         <td><?= $order['ordered_at']; ?></td>
                         <td><?= $order['total']; ?> €</td>
                         <td><span class="status <?= strtolower($order['status']) ?>"></span></td>
@@ -23,7 +23,7 @@
                             if ("PAYMENT_STATUS_PENDING" === $order['status']) {
                                 $formId = "cancel_order_". $order['id'];
                             ?>
-                                <form id="<?= $formId ?>" action="src/scripts/action/cancel_order.php" method="post">
+                                <form id="<?= $formId ?>" action="src/action/cancel_order.php" method="post">
                                     <input type="hidden" value="<?= $order['id'];  ?>" name="order_id"> 
                                     <input type="hidden" value="<?= generateCsrfToken($formId) ?>" name="token">
                                     <button class="red-button small-button" type="submit"><i class="fas fa-trash"></i></button>
@@ -37,7 +37,7 @@
             $orderItems = getOrderItems($_GET['order_id']);
         ?>
             <table>
-                <caption><i class="fas fa-shopping-cart"></i> Votre panier : <span> <?= computeTotalOrder($orderItems); ?> </span>€</caption>
+                <caption><i class="fas fa-euro"></i> Total : <span> <?= computeTotalOrder($orderItems); ?> </span>€</caption>
                 <thead>
                     <tr>
                         <th>Type de produit</th>
@@ -66,5 +66,5 @@
                     </tr>
                 </tfoot>
             </table>
-            <a href="../../profile.php">Retour liste</a>
+            <a class="black-button" href="../../profile.php">Retour liste</a>
 <?php }?>

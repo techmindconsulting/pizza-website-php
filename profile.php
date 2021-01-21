@@ -7,7 +7,12 @@
 <html lang="fr">
     <head>
         <?php 
-            include 'src/includes/shared/head.php'; 
+            include 'src/template/shared/head.php'; 
+            if (!isset($_SESSION['auth'])) {
+                setFlash('login', 'Merci de vous connecter', 'alert alert-error');
+                header('Location: login.php');
+            }
+
             $statOrder = getOrderByUser($_SESSION['auth']['user']['id']);
         ?>
     </head>
@@ -15,23 +20,22 @@
     <header id="header" class="header">
     <?php 
         $currentPage = 'account'; 
-        include 'src/includes/shared/menu.php'; ?>
+        include 'src/template/shared/menu.php'; ?>
     </header>
     <section class="account wrapper background-grey">
         <div class="container text-left">
-            <p class="logout">
-                <a href="login.php" class="red-button small-button"><i class="fas fa-sign-out-alt"></i></a>
-            </p>
-            <h2>Mon compte</h2>
+            
+            <a href="login.php"><i class="fas fa-sign-out-alt"></i></a>
+            <h2>Mon compte </h2>
             <?php 
                 getFlash('login');
+                getFlash('cancel_order');
             ?>
             
-            <?php include 'src/includes/section/account.php'; ?>
-            <?php include 'src/includes/section/table_orders.php'; ?>
+            <?php include 'src/template/section/account.php'; ?>
+            <?php include 'src/template/section/table_orders.php'; ?>
         </div>
     </section>
-    <?php include 'src/includes/shared/footer.php'; ?>
-    <?php include 'src/includes/shared/button_whatsapp.php'; ?>
+    <?php include 'src/template/shared/footer.php'; ?>
 
 </html>

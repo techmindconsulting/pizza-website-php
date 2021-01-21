@@ -70,6 +70,9 @@
                         ?>
                     </a>
                 </li>
+                <?php if (isset($_SESSION['auth']['logged'])) { ?>
+                    <li><a href="login.php">Déconnexion</a></li>
+                <?php } ?>
         </ul>
     </nav>
 </div>

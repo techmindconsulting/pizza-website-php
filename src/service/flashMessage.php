@@ -29,7 +29,7 @@ function getFlash(string $name) : void
         $flashMesssage = <<<EOT
         <p id="flash-message" class="{$className}">{$message} 
             <a href="#">
-                <i class="fas fa-times"></i>
+                <i style="font-size:0.8rem" class="fas fa-times"></i>
             </a>
         </p>
         EOT; 

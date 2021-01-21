@@ -3,10 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once '../../../boostrap.php';
+require_once '../../boostrap.php';
 
 if ('POST' !== $_SERVER['REQUEST_METHOD']) {
-    header('Location:../../../carte.php');
+    header('Location:../../carte.php');
     die;
 }
 
@@ -34,11 +34,11 @@ if ($isValid) {
     $message = "<i class='fas fa-hamburger'></i> Voici votre numéro de commande ". $data['order_id'];
     setFlash('confirm-cart',$message,'alert-success');
         
-    header('Location:../../../confirmation.php?confirm=ok&order_id='.$data['order_id']);
+    header('Location:../../confirmation.php?confirm=ok&order_id='.$data['order_id']);
 } else {
     $message = "Un problème a eu lieu lors de la commande, merci de contacter le support";
     setFlash('confirm-cart', $message, 'alert-error');
 
-    header('Location:../../../carte.php');
+    header('Location:../../carte.php');
 }
 die;

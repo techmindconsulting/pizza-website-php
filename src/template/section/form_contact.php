@@ -12,7 +12,7 @@
         <?php   } ?>
 
         <p class="white">Envoyez nous vos messages, nous serons heureux de vous répondre!</p>
-        <form name="contact-form" method="POST" action="src/scripts/action/send_mail.php">
+        <form name="contact-form" method="POST" action="src/action/send_mail.php">
             <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Nom" required>

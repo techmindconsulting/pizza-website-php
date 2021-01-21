@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <?php include 'src/includes/shared/head.php'; ?>
+        <?php include 'src/template/shared/head.php'; ?>
     </head>
     <body>
     <header id="header" class="header">
         <?php 
         $currentPage = 'carte'; 
-        include 'src/includes/shared/menu.php'; ?>
+        include 'src/template/shared/menu.php'; ?>
     </header>
     <?php 
         if (isset($_GET['product-type-id'])) {
-            include 'src/includes/section/product.php';
+            include 'src/template/section/product.php';
         } else {
-            include 'src/includes/section/product_type.php'; 
+            include 'src/template/section/product_type.php'; 
         }
     ?>
-    <?php include 'src/includes/shared/footer.php'; ?>
-    <?php include 'src/includes/shared/button_whatsapp.php'; ?>
+    <?php include 'src/template/shared/footer.php'; ?>
+    <?php include 'src/template/shared/button_whatsapp.php'; ?>
     </body>
 </html>
