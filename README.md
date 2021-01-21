@@ -35,7 +35,7 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     │   │   ├── cart.php
     │   │   ├── csrf.php
     │   │   ├── debug.php
-    │   │   ├── flahMessage.php
+    │   │   ├── flashMessage.php
     │   │   ├── mailer.php
     │   │   ├── order.php
     │   │   └── validation.php
