@@ -220,17 +220,39 @@ __Documentation__:
 
 
 ##### 4.2 Conditions
-
+###### IF
 ``` 
 <?php 
     if ($currentPage === 'contact') { ?> 
         class="active"
 <?php } ?>>La carte</a></li>
 ```
+
+###### IF ELSE
+```
+<?php 
+if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
+    unset($_SESSION['cart_item'][$_GET['product_id']]);
+} else {
+    unset($_SESSION['cart_item']);
+}
+```
+###### SWITCH
+```
+switch ($_POST['status']) {
+    case PAYMENT_STATUS_CANCELLED:
+        setFlash('status_order', 'La commande a bien été annulée', 'alert-success');
+        break;
+    case PAYMENT_STATUS_PAID:
+        setFlash('status_order', 'La commande a bien été payé', 'alert-success');
+        break;
+}
+```
 __Documentation__:
 
-* [Structures de controles if](https://www.php.net/manual/fr/control-structures.if.php)
-* [Structures de controles else](https://www.php.net/manual/fr/control-structures.else.php)
+* [Structure de controle if](https://www.php.net/manual/fr/control-structures.if.php)
+* [Structure de controle else](https://www.php.net/manual/fr/control-structures.else.php)
+* [Structures de contôle switch](https://www.php.net/manual/fr/control-structures.switch.php)
 
 #### 5. Les fonctions
 
@@ -262,44 +284,67 @@ __Documentation__:
 * [Les valeurs de retour](https://www.php.net/manual/fr/functions.returning-values.php)
 * [https://www.php.net/manual/fr/functions.internal.php](https://www.php.net/manual/fr/functions.internal.php)
 
-#### 6. Connexion à la base de donnée: PDO class et SQL
+#### 6. PDO
+
+#### 6.1 Connexions
 
 ```
     $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD]);
 ```
+__Documentation__:
+
+* [Objet PDO qui représente une connexion à la base](https://www.php.net/manual/fr/pdo.construct.php)
+
+#### 6.2 PDO et PDOStatement
 
 ``` 
-function getProductTypes() : array
+function getOrderItems(int $id)
 {
     global $connexion;
 
-    $statement = $connexion->prepare('SELECT * FROM product_type');
-    $statement->execute();
+    $sql = "SELECT o.id, o.ordered_at, pt.type, p.name, p.price, ot.quantity, (p.price * ot.quantity) as total 
+    FROM `order` o
+    INNER JOIN order_item ot ON ot.order_id = o.id 
+    INNER JOIN product p ON p.id = ot.product_id
+    INNER JOIN product_type pt ON pt.id = p.product_type_id
+    WHERE o.id = :order_id";
+
+    $statement = $connexion->prepare($sql);
+    $statement->bindParam(':order_id', $id);
     $statement->setFetchMode(PDO::FETCH_ASSOC);
-    
+
+    $statement->execute();
+
     return $statement->fetchAll();
 }
 ```
-
 __Documentation__:
 
 * [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
-* [PDO::prepare — Prépare une requête à l'exécution et retourne un objet](https://www.php.net/manual/fr/pdo.prepare.php)
+* [Classe représentant une connexion PHP à un serveur de base de données](https://www.php.net/manual/fr/class.pdo.php)
+* [Prépare une requête à l'exécution et retourne un objet](https://www.php.net/manual/fr/pdo.prepare)
+* [Classe représentant une requête préparée](https://www.php.net/manual/en/* class.pdostatement.php)
+* [Lie un paramètre à un nom de variable spécifique](https://www.php.net/manual/fr/pdostatement.bindparam.php)
+* [Exécute une requête préparée](https://www.php.net/manual/fr/pdostatement.execute.php)
+* [Retourne un tableau contenant toutes les lignes](https://www.php.net/manual/fr/pdostatement.fetchall.php)
+* [Mode de récupération pour les requêtes](https://www.php.net/manual/en/pdostatement.setfetchmode.php)
+* [Constantes PDO](https://www.php.net/manual/fr/pdo.constants.php)
+
 
 #### 7. Les exceptions
 
 ```
-try {
-    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
-    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
-    
-    // Configure un attribut de base de données => PDO::ERRMODE_EXCEPTION : émet une exception.
-    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-} catch(PDOException $exception) {
-    $message = $exception->getMessage();
-    header('Location:maintenance.php');
-}
+    try {
+        $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD);
+        // Configure un attribut de base de données => PDO::ERRMODE_EXCEPTION : 
+        // émet une exception.
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+    } catch(PDOException $exception) {
+        $message = $exception->getMessage();
+        sendNotification('Connexion Error', $message);
+        header('Location:maintenance.php');
+    }
 ``` 
 
 __Documentation__:
@@ -374,4 +419,20 @@ __Documentation__:
 * [En savoir plus sur les filtres](https://www.php.net/manual/fr/book.filter.php)
 
 
+#### 11. Manipuler des tableaux
 
+#### 12. Manipuler des dates
+
+#### 13. Bufferisation
+
+#### 14. Les cookies
+
+#### 15. Les sessions
+
+#### 16. Gestions des mot de passe
+
+#### 17. PHP AJAX
+
+#### 18. HEREDOC
+
+#### 19. Sucre syntaxique
