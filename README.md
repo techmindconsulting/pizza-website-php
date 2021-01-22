@@ -293,7 +293,9 @@ __Documentation__:
 ```
 __Documentation__:
 
+* [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
 * [Objet PDO qui représente une connexion à la base](https://www.php.net/manual/fr/pdo.construct.php)
+* [Classe représentant une connexion PHP à un serveur de base de données](https://www.php.net/manual/fr/class.pdo.php)
 
 #### 6.2 PDO et PDOStatement
 
@@ -320,10 +322,8 @@ function getOrderItems(int $id)
 ```
 __Documentation__:
 
-* [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
-* [Classe représentant une connexion PHP à un serveur de base de données](https://www.php.net/manual/fr/class.pdo.php)
 * [Prépare une requête à l'exécution et retourne un objet](https://www.php.net/manual/fr/pdo.prepare)
-* [Classe représentant une requête préparée](https://www.php.net/manual/en/* class.pdostatement.php)
+* [Classe représentant une requête préparée](https://www.php.net/manual/en/class.pdostatement.php)
 * [Lie un paramètre à un nom de variable spécifique](https://www.php.net/manual/fr/pdostatement.bindparam.php)
 * [Exécute une requête préparée](https://www.php.net/manual/fr/pdostatement.execute.php)
 * [Retourne un tableau contenant toutes les lignes](https://www.php.net/manual/fr/pdostatement.fetchall.php)
