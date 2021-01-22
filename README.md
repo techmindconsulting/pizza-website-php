@@ -466,14 +466,15 @@ __Documentation__:
 $orderedAt = (new DateTime())->format('Y-m-d H:i:s');
 ```
 __Documentation__:
-[La classe DateTime](https://www.php.net/manual/fr/class.datetime)
-[Format](https://www.php.net/manual/fr/datetime.formats.date.php)
+
+* [La classe DateTime](https://www.php.net/manual/fr/class.datetime)
+* [Format](https://www.php.net/manual/fr/datetime.formats.date.php)
 
 ```
 <p class="copyright">© Pizza Billy - Pizzeria <?= date('Y'); ?></p>
 ``` 
 __Documentation__:
-[date](https://www.php.net/manual/fr/function.date)
+* [date](https://www.php.net/manual/fr/function.date)
 
 #### 13. Bufferisation
 
