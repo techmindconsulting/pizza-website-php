@@ -478,14 +478,134 @@ __Documentation__:
 
 #### 13. Bufferisation
 
+```
+<?php 
+    ob_start();
+?>
+```
+```
+<?php
+    $scriptJavascript = ob_get_contents();
+    ob_end_clean();
+?>
+```
+
+__Documentation__:
+* [Enclenche la temporisation de sortie](https://www.php.net/manual/fr/function.ob-start.php)
+* [Retourne le contenu du tampon de sortie](https://www.php.net/manual/fr/function.ob-get-contents.php)
+* [Détruit les données du tampon et eteint la temporisation de sortie](https://www.php.net/manual/fr/function.ob-end-clean.php)
+
 #### 14. Les cookies
 
 #### 15. Les sessions
+```
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+```
 
+```
+$_SESSION['cart_item'][$product['id']]['quantity'] = (int)$_POST['quantity'];
+$_SESSION['cart_item'][$product['id']]['name'] = $product['name'];
+$_SESSION['cart_item'][$product['id']]['product_type_id'] = $product['product_type_id'];;
+$_SESSION['cart_item'][$product['id']]['price'] = (int)$product['price'];
+```
 #### 16. Gestions des mot de passe
+
+```
+function hashPassword(string $password) : string
+{
+    return password_hash($password, PASSWORD_DEFAULT);
+}
+```
+
+```
+if (password_verify($password, $user['password'])) {
+    $_SESSION['auth']['logged'] = true;
+    $_SESSION['auth']['user'] = $user;
+
+    return true;
+}
+``` 
+
 
 #### 17. PHP AJAX
 
-#### 18. HEREDOC
+``` 
+<script>
+    function checkEmail(data)
+    {
+        if (data.length !== 0) {
+            const xmlHttp = new XMLHttpRequest();
+            
+            xmlHttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    const result = JSON.parse(this.responseText);
+                    if (result.exists) {
+                        document.getElementById('email').style.border = '2px solid red';
+                        document.getElementById('checkout').disabled = true;
+                        document.querySelector('p.caption').innerText = 'Email deja existant';
+                    } else {
+                        document.getElementById('email').style.border = '2px solid green';
+                        document.getElementById('checkout').removeAttribute("disabled");
+                        document.querySelector('p.caption').innerText = '';
+                    }
+                }
+            }
+            xmlHttp.open('GET', 'src/action/check_email_exists.php?email=' + data, true);
+            xmlHttp.send();
+        }
+    }
+</script>
+``` 
 
-#### 19. Sucre syntaxique
+```
+if (!empty($userEmail)) {
+    $isExists = ['exists' => true, 'email' => $email];
+}
+
+echo json_encode($isExists);
+```
+
+
+#### 18. Sucre syntaxique
+
+* La syntaxe Heredoc PHP est un moyen d'écrire de gros blocs de texte à l'intérieur de PHP, sans les délimiteurs classiques entre guillemets simples et doubles. 
+Il s'appuie sur <<< et un jeton qui marquera également la fin de la chaîne.
+
+```
+    $header = <<<EOT
+            <html>
+            <body>
+            <h1>Commande numéro {$customerData['order_id']} de {$customerData['fullname']}</h1>
+            <dl>
+                <dt style="float:left;font-size:24px">Email</dt>
+                <dd style="font-size:24px">{$customerData['email']}</dd>
+                <dt style="float:left;font-size:24px">Téléphone</dt>
+                <dd style="font-size:24px">{$customerData['phone']}</dd>
+                <dt style="float:left;font-size:24px">Adresse</dt>
+                <dd style="font-size:24px">{$customerData['address']}</dd>
+            <dl>
+            <h2>Détail de la commande</h2>
+            <table style="border:1px solid black;border-collapse:collapse;border-spacing:20px">
+                <tr>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Type de produit</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Produit</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Quantité</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Price</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Total</th>
+                </tr>
+            <tbody>
+            EOT;
+```
+
+[heredoc](https://www.php.net/manual/fr/language.types.string.php#language.types.string.syntax.heredoc)
+
+* L'opérateur Null coalescent (??) a été ajouté comme un sucre syntaxique pour les cas de besoin le plus commun d'utiliser une troisième conjonction avec la fonction isset(). Il retourne le premier opérande s'il existe et n'a pas une valeur null; et retourne le second opérande sinon.
+
+```
+$orderId = $_GET['order_id'] ?? $_GET['order_id']; 
+```
+
+[Opérateur null coalescing](https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op)
+
