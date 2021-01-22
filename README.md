@@ -282,7 +282,7 @@ __Documentation__:
 * [Les fonctions définies par l'utilisateur](https://www.php.net/manual/fr/functions.user-defined.php)
 * [Les arguments de fonction](https://www.php.net/manual/fr/functions.arguments.php)
 * [Les valeurs de retour](https://www.php.net/manual/fr/functions.returning-values.php)
-* [https://www.php.net/manual/fr/functions.internal.php](https://www.php.net/manual/fr/functions.internal.php)
+* [Fonction interne](https://www.php.net/manual/fr/functions.internal.php)
 
 #### 6. PDO
 
@@ -349,7 +349,7 @@ __Documentation__:
 
 __Documentation__:
 
-[Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
+* [Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
  
 #### 8. Gestion des données de page en page: GET
@@ -366,7 +366,7 @@ __Documentation__:
 
 __Documentation__:
 
-[$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
+* [$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
 
 
 #### 9. Gérer un formulaire : POST
@@ -421,7 +421,59 @@ __Documentation__:
 
 #### 11. Manipuler des tableaux
 
+* [Les tableaux](https://www.php.net/manual/fr/language.types.array.php)
+* [Les fonction array](https://www.php.net/manual/fr/function.array.php)
+
+```
+    if (!isset($_SESSION['auth']['logged'])) {
+        $data = array_merge($_POST, $_SESSION);
+        $data['password'] = hashPassword($data['password']);
+        $userId = createUser($data);
+    } else {
+        $user = getUser($_POST['email']);
+        $data = array_merge($user, $_SESSION);
+        $userId = $user['id'];
+    }
+```
+
+__Documentation__:
+* $_POST : Un tableau associatif des valeurs passées au script courant via le protocole HTTP 
+* $_SESSION : Un tableau associatif des valeurs stockées dans les sessions.
+* [Fusionner des tableaux](https://www.php.net/manual/fr/function.array-merge)
+
+```
+function computeTotalOrder(array $cartItem) : float 
+{
+    return array_sum(array_column($cartItem, 'total'));
+}
+```
+__Documentation__:
+* [Calcule la somme des valeurs des tableaux](https://www.php.net/manual/fr/function.array-sum.php)
+* [Retourne les valeurs d'une colonne d'un tableau d'entrée](https://www.php.net/manual/fr/function.array-column.php)
+
+```
+    $statOrder['total'] = count($orders);
+    $statOrder['status'] = array_count_values(array_column($orders, 'status'));   
+```
+
+__Documentation__:
+* [Compte le nombre de valeur d'un tableau](https://www.php.net/manual/fr/function.array-count-values.php)
+* [Compte tous les éléments d'un tableau ou quelque chose d'un objet](https://www.php.net/manual/fr/function.count.php)
+
 #### 12. Manipuler des dates
+
+```
+$orderedAt = (new DateTime())->format('Y-m-d H:i:s');
+```
+__Documentation__:
+[La classe DateTime](https://www.php.net/manual/fr/class.datetime)
+[Format](https://www.php.net/manual/fr/datetime.formats.date.php)
+
+```
+<p class="copyright">© Pizza Billy - Pizzeria <?= date('Y'); ?></p>
+``` 
+__Documentation__:
+[date](https://www.php.net/manual/fr/function.date)
 
 #### 13. Bufferisation
 
