@@ -430,7 +430,7 @@ __Documentation__:
         $data['password'] = hashPassword($data['password']);
         $userId = createUser($data);
     } else {
-        $user = getUser($_POST['email']);
+        $user = getUserBy('email', $_POST['email']);
         $data = array_merge($user, $_SESSION);
         $userId = $user['id'];
     }
