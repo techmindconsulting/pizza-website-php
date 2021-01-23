@@ -474,6 +474,7 @@ __Documentation__:
 <p class="copyright">© Pizza Billy - Pizzeria <?= date('Y'); ?></p>
 ``` 
 __Documentation__:
+
 * [date](https://www.php.net/manual/fr/function.date)
 
 #### 13. Bufferisation
@@ -489,6 +490,10 @@ __Documentation__:
     ob_end_clean();
 ?>
 ```
+
+__Documentation__:
+
+* [Fonction de bufferisation de sortie](https://www.php.net/manual/fr/ref.outcontrol.php)
 
 __Documentation__:
 * [Enclenche la temporisation de sortie](https://www.php.net/manual/fr/function.ob-start.php)
@@ -527,7 +532,10 @@ if (password_verify($password, $user['password'])) {
     return true;
 }
 ``` 
+__Documentation__:
 
+* [Crée une clé de hachage pour un mot de passe](https://www.php.net/manual/fr/function.password-verify)
+* [Vérifie qu'un mot de passe correspond à un hachage](https://www.php.net/manual/fr/function.password-hash.php)
 
 #### 17. PHP AJAX
 
@@ -566,6 +574,10 @@ if (!empty($userEmail)) {
 
 echo json_encode($isExists);
 ```
+__Documentation__:
+
+* [XMLHttpRequest] (https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+* [Exemple W3C](https://www.w3schools.com/php/php_ajax_php.asp)
 
 
 #### 18. Sucre syntaxique
@@ -598,8 +610,9 @@ Il s'appuie sur <<< et un jeton qui marquera également la fin de la chaîne.
             <tbody>
             EOT;
 ```
+__Documentation__:
 
-[heredoc](https://www.php.net/manual/fr/language.types.string.php#language.types.string.syntax.heredoc)
+* [heredoc](https://www.php.net/manual/fr/language.types.string.php#language.types.string.syntax.heredoc)
 
 * L'opérateur Null coalescent (??) a été ajouté comme un sucre syntaxique pour les cas de besoin le plus commun d'utiliser une troisième conjonction avec la fonction isset(). Il retourne le premier opérande s'il existe et n'a pas une valeur null; et retourne le second opérande sinon.
 
@@ -607,5 +620,6 @@ Il s'appuie sur <<< et un jeton qui marquera également la fin de la chaîne.
 $orderId = $_GET['order_id'] ?? $_GET['order_id']; 
 ```
 
-[Opérateur null coalescing](https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op)
+__Documentation__:
 
+* [Opérateur null coalescing](https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op)
