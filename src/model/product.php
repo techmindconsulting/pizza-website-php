@@ -35,14 +35,14 @@ function getProduct(int $productId) : ?array
     return $statement->fetch();
 }
 
-function getProductType(int $productTypeId, string $columnn = 'type') : string 
+function getProductType(int $productTypeId, string $column = 'type') : string 
 {
     global $connexion;
-    $sql = 'SELECT '. $columnn .' FROM product_type where id = :id';
+    $sql = 'SELECT '. $column .' FROM product_type where id = :id';
     $statement = $connexion->prepare($sql);
     $statement->bindParam(':id', $productTypeId, PDO::PARAM_INT);
     $statement->execute();
     $result = $statement->fetch();
   
-    return $result[$columnn];
+    return $result[$column];
 }

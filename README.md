@@ -220,17 +220,39 @@ __Documentation__:
 
 
 ##### 4.2 Conditions
-
+###### IF
 ``` 
 <?php 
     if ($currentPage === 'contact') { ?> 
         class="active"
 <?php } ?>>La carte</a></li>
 ```
+
+###### IF ELSE
+```
+<?php 
+if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
+    unset($_SESSION['cart_item'][$_GET['product_id']]);
+} else {
+    unset($_SESSION['cart_item']);
+}
+```
+###### SWITCH
+```
+switch ($_POST['status']) {
+    case PAYMENT_STATUS_CANCELLED:
+        setFlash('status_order', 'La commande a bien été annulée', 'alert-success');
+        break;
+    case PAYMENT_STATUS_PAID:
+        setFlash('status_order', 'La commande a bien été payé', 'alert-success');
+        break;
+}
+```
 __Documentation__:
 
-* [Structures de controles if](https://www.php.net/manual/fr/control-structures.if.php)
-* [Structures de controles else](https://www.php.net/manual/fr/control-structures.else.php)
+* [Structure de controle if](https://www.php.net/manual/fr/control-structures.if.php)
+* [Structure de controle else](https://www.php.net/manual/fr/control-structures.else.php)
+* [Structures de contôle switch](https://www.php.net/manual/fr/control-structures.switch.php)
 
 #### 5. Les fonctions
 
@@ -260,51 +282,74 @@ __Documentation__:
 * [Les fonctions définies par l'utilisateur](https://www.php.net/manual/fr/functions.user-defined.php)
 * [Les arguments de fonction](https://www.php.net/manual/fr/functions.arguments.php)
 * [Les valeurs de retour](https://www.php.net/manual/fr/functions.returning-values.php)
-* [https://www.php.net/manual/fr/functions.internal.php](https://www.php.net/manual/fr/functions.internal.php)
+* [Fonction interne](https://www.php.net/manual/fr/functions.internal.php)
 
-#### 6. Connexion à la base de donnée: PDO class et SQL
+#### 6. PDO
+
+#### 6.1 Connexions
 
 ```
     $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD]);
 ```
-
-``` 
-function getProductTypes() : array
-{
-    global $connexion;
-
-    $statement = $connexion->prepare('SELECT * FROM product_type');
-    $statement->execute();
-    $statement->setFetchMode(PDO::FETCH_ASSOC);
-    
-    return $statement->fetchAll();
-}
-```
-
 __Documentation__:
 
 * [Connexions et gestionnaire de connexion](https://www.php.net/manual/fr/pdo.connections.php)
-* [PDO::prepare — Prépare une requête à l'exécution et retourne un objet](https://www.php.net/manual/fr/pdo.prepare.php)
+* [Objet PDO qui représente une connexion à la base](https://www.php.net/manual/fr/pdo.construct.php)
+* [Classe représentant une connexion PHP à un serveur de base de données](https://www.php.net/manual/fr/class.pdo.php)
+
+#### 6.2 PDO et PDOStatement
+
+``` 
+function getOrderItems(int $id)
+{
+    global $connexion;
+
+    $sql = "SELECT o.id, o.ordered_at, pt.type, p.name, p.price, ot.quantity, (p.price * ot.quantity) as total 
+    FROM `order` o
+    INNER JOIN order_item ot ON ot.order_id = o.id 
+    INNER JOIN product p ON p.id = ot.product_id
+    INNER JOIN product_type pt ON pt.id = p.product_type_id
+    WHERE o.id = :order_id";
+
+    $statement = $connexion->prepare($sql);
+    $statement->bindParam(':order_id', $id);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
+
+    $statement->execute();
+
+    return $statement->fetchAll();
+}
+```
+__Documentation__:
+
+* [Prépare une requête à l'exécution et retourne un objet](https://www.php.net/manual/fr/pdo.prepare)
+* [Classe représentant une requête préparée](https://www.php.net/manual/en/class.pdostatement.php)
+* [Lie un paramètre à un nom de variable spécifique](https://www.php.net/manual/fr/pdostatement.bindparam.php)
+* [Exécute une requête préparée](https://www.php.net/manual/fr/pdostatement.execute.php)
+* [Retourne un tableau contenant toutes les lignes](https://www.php.net/manual/fr/pdostatement.fetchall.php)
+* [Mode de récupération pour les requêtes](https://www.php.net/manual/en/pdostatement.setfetchmode.php)
+* [Constantes PDO](https://www.php.net/manual/fr/pdo.constants.php)
+
 
 #### 7. Les exceptions
 
 ```
-try {
-    $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD, 
-    [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"]);
-    
-    // Configure un attribut de base de données => PDO::ERRMODE_EXCEPTION : émet une exception.
-    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-} catch(PDOException $exception) {
-    $message = $exception->getMessage();
-    header('Location:maintenance.php');
-}
+    try {
+        $connexion = new PDO(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD);
+        // Configure un attribut de base de données => PDO::ERRMODE_EXCEPTION : 
+        // émet une exception.
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+    } catch(PDOException $exception) {
+        $message = $exception->getMessage();
+        sendNotification('Connexion Error', $message);
+        header('Location:maintenance.php');
+    }
 ``` 
 
 __Documentation__:
 
-[Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
+* [Les exceptions](https://www.php.net/manual/fr/language.exceptions.php)
 
  
 #### 8. Gestion des données de page en page: GET
@@ -321,7 +366,7 @@ __Documentation__:
 
 __Documentation__:
 
-[$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
+* [$_GET — Variables HTTP GET](https://www.php.net/manual/fr/reserved.variables.get.php)
 
 
 #### 9. Gérer un formulaire : POST
@@ -374,4 +419,207 @@ __Documentation__:
 * [En savoir plus sur les filtres](https://www.php.net/manual/fr/book.filter.php)
 
 
+#### 11. Manipuler des tableaux
 
+* [Les tableaux](https://www.php.net/manual/fr/language.types.array.php)
+* [Les fonction array](https://www.php.net/manual/fr/function.array.php)
+
+```
+    if (!isset($_SESSION['auth']['logged'])) {
+        $data = array_merge($_POST, $_SESSION);
+        $data['password'] = hashPassword($data['password']);
+        $userId = createUser($data);
+    } else {
+        $user = getUser($_POST['email']);
+        $data = array_merge($user, $_SESSION);
+        $userId = $user['id'];
+    }
+```
+
+__Documentation__:
+* $_POST : Un tableau associatif des valeurs passées au script courant via le protocole HTTP 
+* $_SESSION : Un tableau associatif des valeurs stockées dans les sessions.
+* [Fusionner des tableaux](https://www.php.net/manual/fr/function.array-merge)
+
+```
+function computeTotalOrder(array $cartItem) : float 
+{
+    return array_sum(array_column($cartItem, 'total'));
+}
+```
+__Documentation__:
+* [Calcule la somme des valeurs des tableaux](https://www.php.net/manual/fr/function.array-sum.php)
+* [Retourne les valeurs d'une colonne d'un tableau d'entrée](https://www.php.net/manual/fr/function.array-column.php)
+
+```
+    $statOrder['total'] = count($orders);
+    $statOrder['status'] = array_count_values(array_column($orders, 'status'));   
+```
+
+__Documentation__:
+* [Compte le nombre de valeur d'un tableau](https://www.php.net/manual/fr/function.array-count-values.php)
+* [Compte tous les éléments d'un tableau ou quelque chose d'un objet](https://www.php.net/manual/fr/function.count.php)
+
+#### 12. Manipuler des dates
+
+```
+$orderedAt = (new DateTime())->format('Y-m-d H:i:s');
+```
+__Documentation__:
+
+* [La classe DateTime](https://www.php.net/manual/fr/class.datetime)
+* [Format](https://www.php.net/manual/fr/datetime.formats.date.php)
+
+```
+<p class="copyright">© Pizza Billy - Pizzeria <?= date('Y'); ?></p>
+``` 
+__Documentation__:
+
+* [date](https://www.php.net/manual/fr/function.date)
+
+#### 13. Bufferisation
+
+```
+<?php 
+    ob_start();
+?>
+```
+```
+<?php
+    $scriptJavascript = ob_get_contents();
+    ob_end_clean();
+?>
+```
+
+__Documentation__:
+
+* [Fonction de bufferisation de sortie](https://www.php.net/manual/fr/ref.outcontrol.php)
+
+__Documentation__:
+* [Enclenche la temporisation de sortie](https://www.php.net/manual/fr/function.ob-start.php)
+* [Retourne le contenu du tampon de sortie](https://www.php.net/manual/fr/function.ob-get-contents.php)
+* [Détruit les données du tampon et eteint la temporisation de sortie](https://www.php.net/manual/fr/function.ob-end-clean.php)
+
+#### 14. Les cookies
+
+#### 15. Les sessions
+```
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+```
+
+```
+$_SESSION['cart_item'][$product['id']]['quantity'] = (int)$_POST['quantity'];
+$_SESSION['cart_item'][$product['id']]['name'] = $product['name'];
+$_SESSION['cart_item'][$product['id']]['product_type_id'] = $product['product_type_id'];;
+$_SESSION['cart_item'][$product['id']]['price'] = (int)$product['price'];
+```
+#### 16. Gestions des mot de passe
+
+```
+function hashPassword(string $password) : string
+{
+    return password_hash($password, PASSWORD_DEFAULT);
+}
+```
+
+```
+if (password_verify($password, $user['password'])) {
+    $_SESSION['auth']['logged'] = true;
+    $_SESSION['auth']['user'] = $user;
+
+    return true;
+}
+``` 
+__Documentation__:
+
+* [Crée une clé de hachage pour un mot de passe](https://www.php.net/manual/fr/function.password-verify)
+* [Vérifie qu'un mot de passe correspond à un hachage](https://www.php.net/manual/fr/function.password-hash.php)
+
+#### 17. PHP AJAX
+
+``` 
+<script>
+    function checkEmail(data)
+    {
+        if (data.length !== 0) {
+            const xmlHttp = new XMLHttpRequest();
+            
+            xmlHttp.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    const result = JSON.parse(this.responseText);
+                    if (result.exists) {
+                        document.getElementById('email').style.border = '2px solid red';
+                        document.getElementById('checkout').disabled = true;
+                        document.querySelector('p.caption').innerText = 'Email deja existant';
+                    } else {
+                        document.getElementById('email').style.border = '2px solid green';
+                        document.getElementById('checkout').removeAttribute("disabled");
+                        document.querySelector('p.caption').innerText = '';
+                    }
+                }
+            }
+            xmlHttp.open('GET', 'src/action/check_email_exists.php?email=' + data, true);
+            xmlHttp.send();
+        }
+    }
+</script>
+``` 
+
+```
+if (!empty($userEmail)) {
+    $isExists = ['exists' => true, 'email' => $email];
+}
+
+echo json_encode($isExists);
+```
+__Documentation__:
+
+* [XMLHttpRequest] (https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+* [Exemple W3C](https://www.w3schools.com/php/php_ajax_php.asp)
+
+
+#### 18. Sucre syntaxique
+
+* La syntaxe Heredoc PHP est un moyen d'écrire de gros blocs de texte à l'intérieur de PHP, sans les délimiteurs classiques entre guillemets simples et doubles. 
+Il s'appuie sur <<< et un jeton qui marquera également la fin de la chaîne.
+
+```
+    $header = <<<EOT
+            <html>
+            <body>
+            <h1>Commande numéro {$customerData['order_id']} de {$customerData['fullname']}</h1>
+            <dl>
+                <dt style="float:left;font-size:24px">Email</dt>
+                <dd style="font-size:24px">{$customerData['email']}</dd>
+                <dt style="float:left;font-size:24px">Téléphone</dt>
+                <dd style="font-size:24px">{$customerData['phone']}</dd>
+                <dt style="float:left;font-size:24px">Adresse</dt>
+                <dd style="font-size:24px">{$customerData['address']}</dd>
+            <dl>
+            <h2>Détail de la commande</h2>
+            <table style="border:1px solid black;border-collapse:collapse;border-spacing:20px">
+                <tr>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Type de produit</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Produit</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Quantité</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Price</th>
+                    <th style="padding: 10px;font-size:24px;text-transform:uppercase;text-align:center">Total</th>
+                </tr>
+            <tbody>
+            EOT;
+```
+__Documentation__:
+
+* [heredoc](https://www.php.net/manual/fr/language.types.string.php#language.types.string.syntax.heredoc)
+
+* L'opérateur Null coalescent (??) a été ajouté comme un sucre syntaxique pour les cas de besoin le plus commun d'utiliser une troisième conjonction avec la fonction isset(). Il retourne le premier opérande s'il existe et n'a pas une valeur null; et retourne le second opérande sinon.
+
+```
+$orderId = $_GET['order_id'] ?? $_GET['order_id']; 
+```
+
+__Documentation__:
+
+* [Opérateur null coalescing](https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op)
