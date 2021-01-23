@@ -277,6 +277,12 @@ function isValidForm(array $postDatas) : bool
 $isValid =  isValidForm($_POST);
 ```
 
+```
+        $_SESSION['cart_item'][$product['id']]['quantity'] = (int)$_POST['quantity'];
+        $_SESSION['cart_item'][$product['id']]['name'] = $product['name'];
+        $_SESSION['cart_item'][$product['id']]['product_type_id'] = $product['product_type_id'];
+        $_SESSION['cart_item'][$product['id']]['price'] = (int)$product['price'];
+``` 
 __Documentation__:
 
 * [Les fonctions définies par l'utilisateur](https://www.php.net/manual/fr/functions.user-defined.php)
