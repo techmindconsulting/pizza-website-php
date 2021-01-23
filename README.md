@@ -1,6 +1,6 @@
 # pizza-website-php
 
-Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts de PHP procédural et des inclusions de pages.
+Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts de PHP procédural (inclusions de pages).
 
 ## 1. Arboresence
 
@@ -19,12 +19,14 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     ├── src/
     │   ├── action/
     │   │   ├── add_cart.php
-    │   │   ├── update_status_order.php
     │   │   ├── check_email_exists.php
     │   │   ├── confirm_cart.php
     │   │   ├── login.php
     │   │   ├── remove_cart.php
-    │   │   └── send_contact_mail.php
+    │   │   ├── send_contact_mail.php
+    │   │   ├── send_reset_link_password.php
+    │   │   ├── update_password.php
+    │   │   └── update_status_order.php
     │   ├── model/
     │   │   ├── order.php
     │   │   ├── product.php
@@ -45,7 +47,9 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     │       │   ├── cart_item.php
     │       │   ├── form_checkout.php
     │       │   ├── form_contact.php
+    │       │   ├── form_forgot_password.php
     │       │   ├── form_login.php
+    │       │   ├── form_reset_password.php
     │       │   ├── map.php
     │       │   ├── product_type.php
     │       │   ├── product.php
@@ -63,12 +67,13 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
     ├── carte.php
     ├── checkout.php
     ├── confirmation.php
+    ├── forgot_password.php
     ├── index.php
     ├── login.php
     ├── maintenance.php
     ├── profile.php
+    ├── reset_password.php
     └── shopping_cart.php
-    
 ``` 
 
 ## 2. Description 
@@ -91,12 +96,14 @@ Reprendre le site statique de pizzeria et le rendre dynamique avec des concepts 
 
 - boostrap.php : Fichier de chargement de toutes les dépendances nécéssaires à l'éxécution du site.
 - carte.php : Page affichant la liste des produits et type de produits
-- checkout.php : Validation du panier
+- checkout.php : Page de validation du panier
 - confirmation.php : Page de confirmation une fois le panier validé 
+- forgot_password.php : Page de saisie lors de l'oubli du mot
 - index.php : Page d'acceuil
 - login.php : Page de connexion
 - maintenance.php : Page de maintenance
 - profile.php : Page de profil et de commande réservé aux utilisateurs authentifiés
+- reset_password: Page de saisie du nouveau mot de passe.
 - shopping_cart.php : Page d'affichage du panier
 
 ## 3. Notions abordées
