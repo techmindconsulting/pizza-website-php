@@ -24,6 +24,48 @@ function createUser(array $data) : int
     }
 }
 
+function updateUser(string $email, array $criteria)
+{
+    global $connexion;
+
+    $columns = "";
+    $inputParameters[':email'] = $email;
+    
+    foreach($criteria as $column => $value) {
+        $columns .= "{$column} = :{$column}, ";
+        $inputParameters[":{$column}"] = $value;
+    }
+
+    if (array_key_exists(':confirmation_token', $inputParameters)) {
+        $columns .= "password_requested_at = :password_requested_at"; 
+        $inputParameters[':password_requested_at'] = (new DateTime())->format('Y-m-d H:i:s');
+    }
+
+    $columns = rtrim($columns, ", ");
+
+    $sql = "UPDATE `user` SET {$columns} where email = :email";
+    $statement = $connexion->prepare($sql);
+
+    $statement->execute($inputParameters);
+
+    return getUserBy('email', $email);
+}
+
+function removeConfirmationToken(string $email) : void
+{
+    try {
+        global $connexion;
+
+        $sql = "UPDATE user SET confirmation_token = null, password_requested_at = null WHERE email like :email";
+        $statement = $connexion->prepare($sql);
+        $statement->bindParam(':email', $email);
+        $statement->execute();
+    } catch(Exception $exception) {
+        echo $exception->getMessage();
+        die;
+    }
+}
+
 function isUserEmailExists(string $email) : int
 {
     try {
@@ -41,14 +83,15 @@ function isUserEmailExists(string $email) : int
     }
 }
 
-function getUser(string $email) 
+function getUserBy(string $column, string $value) 
 {
     global $connexion;
 
-    $sql = "SELECT * FROM user WHERE email LIKE :email";
+    $sql = "SELECT * FROM user WHERE {$column} LIKE :{$column}";
     $statement = $connexion->prepare($sql);
 
-    $statement->bindParam(':email', $email);
+    $statement->bindParam(":{$column}", $value);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
     $statement->execute();
 
     return $statement->fetch();

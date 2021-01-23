@@ -114,6 +114,25 @@ function buildOrderMessageCustomer(array $customerData)
     return $header . $bodyLines . $footer;
 }
 
+function buildResetPasswordMessage(array $user)
+{
+    $urlResetPassword = URL_RESET_PASSWORD;
+    $message = <<<EOT
+    <html>
+        <body>
+            <h1>Mot de passe oublié</h1>
+            <h2>Bonjour {$user['fullname']}</h2>
+            <p>Vous pouvez réinitialiser votre mot de passe en accédant à </p>
+            <p><a href="{$urlResetPassword}?token={$user['confirmation_token']}">{$urlResetPassword}?token={$user['confirmation_token']}</a></p>
+            <p>Cordialement,</p>
+            <p>Équipe Eduslamic</p>
+        </body>
+    </html>
+    EOT;
+
+    return $message;
+}
+
 function sendMail(string $to, string $subject, string $message, string $header): bool
 {
     if (mail($to, MAIL_SUBJECT . $subject, $message, $header)) {
@@ -159,5 +178,14 @@ function sendConfirmationOrder(array $customerData) : void
     $headerCustomer = buildMailHeader(ADMIN_NAME, ADMIN_EMAIL);
     $messageCustomer = buildOrderMessageCustomer($customerData);
     sendMail($customerData['email'], $subject, $messageCustomer, $headerCustomer);
+}
+
+function sendResetPasswordLink(array $user) : void
+{
+    $header = buildMailHeader($user['fullname'], $user['email']);
+    $message = buildResetPasswordMessage($user);
+    $subject = "Reset Password";
+
+    sendMail($user['email'], $subject, $message, $header);
 }
 

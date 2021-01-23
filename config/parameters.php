@@ -30,3 +30,6 @@
     define("PAYMENT_STATUS_PENDING", 'PAYMENT_STATUS_PENDING');
     define("PAYMENT_STATUS_PAID", 'PAYMENT_STATUS_PAID');
     define("PAYMENT_STATUS_CANCELLED", 'PAYMENT_STATUS_CANCELLED');
+
+    define ("URL_RESET_PASSWORD", "http://pizza-website-php.local/reset_password.php");
+    

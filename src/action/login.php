@@ -18,7 +18,7 @@ if ($hasValidForm && $hasValidEmail) {
    $email = $_POST['email'];
 
    if(login($email,$_POST['password'])) {
-       setFlash("login","Authentification OK", "alert-success");
+       setFlash("login","Bienvenue", "alert-success");
        header('Location:../../profile.php');
        die;
    }

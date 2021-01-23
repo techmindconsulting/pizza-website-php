@@ -34,7 +34,7 @@
                     required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Mot de passe</label>
+                    <label for="password">Mot de passe</label>
                     <input class="form-control" type="password" id="password" name="password" placeholder="Minimum de 4 caractères" minlength="4" required>
                 </div>
             </form>
