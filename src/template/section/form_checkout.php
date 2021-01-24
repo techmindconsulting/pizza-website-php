@@ -6,7 +6,7 @@
 <section class="service wrapper contact background-grey">
     <div class="container form">
         <h2>Validation du panier</h2>
-
+        <?php getFlash('csrf_token'); ?>    
         <?php if (!isset($_SESSION['auth']['logged'])) { ?>   
             <form id="checkout-form" name="checkout-form" method="POST" 
             action="src/action/confirm_cart.php">
@@ -37,13 +37,16 @@
                     <label for="password">Mot de passe</label>
                     <input class="form-control" type="password" id="password" name="password" placeholder="Minimum de 4 caractères" minlength="4" required>
                 </div>
+                <input type="hidden" value="checkout-form" name="form-name">
+                <input type="hidden" value="<?= generateCsrfToken('checkout-form') ?>" name="token">
             </form>
         <?php } else {  ?>
                 <form id="checkout-form" 
                     name="checkout-form" 
                     method="POST" 
                     action="src/action/confirm_cart.php">
-                        
+                    <input type="hidden" value="checkout-form" name="form-name">
+                    <input type="hidden" value="<?= generateCsrfToken('checkout-form') ?>" name="token">
                     <input 
                         type="hidden" 
                         id="email" 

@@ -148,7 +148,7 @@ function sendContactMail(string $firstname,
                 string $phone, 
                 string $message) : bool
 {
-    include '../../../config/parameters.php';
+
     $fullname = $firstname. ' '. $lastname;
     $message = filter_var($message, FILTER_SANITIZE_STRING);
     $fullname = filter_var($fullname, FILTER_SANITIZE_STRING);

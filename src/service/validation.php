@@ -11,6 +11,8 @@ function hasValidEmail(string $email) : bool
 
 function isValidForm(array $postDatas) : bool
 {
+    $postDatas = array_map('cleanFormData', $postDatas);
+    
     if (empty($postDatas)) {
         return false;
     }
@@ -21,5 +23,16 @@ function isValidForm(array $postDatas) : bool
         }
     }
 
+    if (!hasValidToken($postDatas['form-name'])) {
+        setFlash('csrf_token', 'Jeton CSRF non valide ou manquant', 'alert-error');
+        header('Location:'.$_SERVER['HTTP_REFERER']);
+        die;
+    }
+
     return true;
+}
+
+function cleanFormData($data)
+{
+    return htmlspecialchars(stripslashes(trim($data)));
 }

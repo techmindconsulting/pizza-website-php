@@ -17,7 +17,7 @@
                 ?>>La carte</a></li>
                 <li>
                     <?php 
-                        $link = isset($_SESSION['auth']['logged']) ? 'profile.php' : 'login.php'; 
+                        $link = isset($_SESSION['auth']['logged']) ? 'profile.php' : 'logout.php'; 
                         $class = $currentPage === 'login' ? 'active' : '';
                     ?>
 
@@ -71,7 +71,7 @@
                     </a>
                 </li>
                 <?php if (isset($_SESSION['auth']['logged'])) { ?>
-                    <li><a href="login.php">Déconnexion</a></li>
+                    <li><a href="logout.php">Déconnexion</a></li>
                 <?php } ?>
         </ul>
     </nav>

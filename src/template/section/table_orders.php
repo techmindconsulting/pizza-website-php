@@ -28,12 +28,14 @@
                                     <input type="hidden" value="<?= $order['id'];  ?>" name="order_id"> 
                                     <input type="hidden" value="<?= PAYMENT_STATUS_CANCELLED  ?>" name="status"> 
                                     <input type="hidden" value="<?= generateCsrfToken($formCancelOrderId) ?>" name="token">
+                                    <input type="hidden" value="<?= $formCancelOrderId ?>" name="form-name">    
                                     <button class="red-button small-button" type="submit"><i class="fas fa-trash"></i></button>
                                 </form>
                                 <form class="form-action-list" id="<?= $formPayOrderId ?>" action="src/action/update_status_order.php" method="post">
                                     <input type="hidden" value="<?= $order['id'];  ?>" name="order_id"> 
                                     <input type="hidden" value="<?= PAYMENT_STATUS_PAID  ?>" name="status"> 
                                     <input type="hidden" value="<?= generateCsrfToken($formPayOrderId) ?>" name="token">
+                                    <input type="hidden" value="<?= $formPayOrderId ?>" name="form-name">    
                                     <button class="green-button small-button" type="submit"><i class="fas fa-euro-sign"></i></button>
                                 </form>
                                 
