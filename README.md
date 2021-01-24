@@ -405,6 +405,13 @@ function isValidForm(array $postDatas) : bool
 }
 ``` 
 
+``` 
+        $_SESSION['cart_item'][$product['id']]['quantity'] = (int)$_POST['quantity'];
+        $_SESSION['cart_item'][$product['id']]['name'] = $product['name'];
+        $_SESSION['cart_item'][$product['id']]['product_type_id'] = $product['product_type_id'];
+        $_SESSION['cart_item'][$product['id']]['price'] = (int)$product['price'];
+```
+
 __Documentation__:
 
 * [$_POST — Variables HTTP POST](https://www.php.net/manual/fr/reserved.variables.post.php)
