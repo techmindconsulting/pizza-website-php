@@ -32,8 +32,6 @@ unset($_SESSION['auth']);
     </header>
     <?php 
         include 'src/template/section/form_reset_password.php';
-        session_unset();
-        session_destroy();
     ?>
     <?php include 'src/template/shared/footer.php'; ?>
     <?php include 'src/template/shared/button_whatsapp.php'; ?>

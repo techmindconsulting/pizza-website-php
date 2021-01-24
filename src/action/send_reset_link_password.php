@@ -18,4 +18,9 @@ if (false !== getUserBy('email', $email)) {
     sendResetPasswordLink($user);
     setFlash('login', 'Un lien vous a été envoyé', 'alert alert-success');
     header('Location: ../../forgot_password.php');
-}
+    die;
+} 
+
+setFlash('login', 'L\'utilisateur n\'existe pas', 'alert alert-error');
+header('Location: ../../forgot_password.php');
+die;

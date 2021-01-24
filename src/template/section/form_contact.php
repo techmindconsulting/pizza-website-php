@@ -1,18 +1,9 @@
 <section id="contact" class="wrapper background-blue">
     <div class="container form">
         <h2>Contact</h2>
-        <?php 
-                if (isset($_GET['sent']) && $_GET['sent'] === 'ok') { ?>
-                    <p class="alert alert-success">Votre email a bien été envoyé</p>
-        <?php   } ?>
-
-        <?php 
-                if (isset($_GET['sent']) && $_GET['sent'] === 'ko') { ?>
-                    <p class="alert alert-error">Un problème a eu lieu lors de l'envoi d'email, merci de contacter le support.</p>
-        <?php   } ?>
-
+        <?php getFlash('contact'); ?>
         <p class="white">Envoyez nous vos messages, nous serons heureux de vous répondre!</p>
-        <form name="contact-form" method="POST" action="src/action/send_mail.php">
+        <form name="contact-form" method="POST" action="src/action/send_contact_mail.php">
             <div class="form-group">
                 <label for="lastname">Nom</label>
                 <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Nom" required>
@@ -34,6 +25,8 @@
                 <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
             </div>
             <div>
+                <input type="hidden" value="contact-form" name="form-name">    
+                <input type="hidden" value="<?= generateCsrfToken('contact-form') ?>" name="token">
                 <input  class="black-button" type="submit" value="Envoyer">
             </div>
         </form>

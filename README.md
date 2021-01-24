@@ -630,3 +630,10 @@ $orderId = $_GET['order_id'] ?? $_GET['order_id'];
 __Documentation__:
 
 * [Opérateur null coalescing](https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op)
+
+19. Sécurité
+
+[Injection SQL](https://fr.wikipedia.org/wiki/Injection_SQL)
+[CSRF](https://fr.wikipedia.org/wiki/Cross-site_request_forgery)
+[XSS](https://fr.wikipedia.org/wiki/Cross-site_scripting)
+
