@@ -485,7 +485,7 @@ __Documentation__:
 * [Format](https://www.php.net/manual/fr/datetime.formats.date.php)
 
 ```
-<p class="copyright">© Pizza Billy - Pizzeria <?= date('Y'); ?></p>
+<p class="copyright">© Pizza Food - Pizzeria <?= date('Y'); ?></p>
 ``` 
 __Documentation__:
 
@@ -640,7 +640,9 @@ __Documentation__:
 
 19. Sécurité
 
-[Injection SQL](https://fr.wikipedia.org/wiki/Injection_SQL)
-[CSRF](https://fr.wikipedia.org/wiki/Cross-site_request_forgery)
-[XSS](https://fr.wikipedia.org/wiki/Cross-site_scripting)
+* [Injection SQL](https://fr.wikipedia.org/wiki/Injection_SQL)
+
+* [CSRF](https://fr.wikipedia.org/wiki/Cross-site_request_forgery)
+
+* [XSS](https://fr.wikipedia.org/wiki/Cross-site_scripting)
 

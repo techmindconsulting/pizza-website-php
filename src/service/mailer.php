@@ -167,7 +167,7 @@ function sendNotification(string $subject, string $message) : bool
 
 function sendConfirmationOrder(array $customerData) : void
 {
-    $subject = PAYMENT_STATUS_PENDING. ' numéro '.$customerData['order_id'];
+    $subject = getStatus(PAYMENT_STATUS_PENDING). ' numéro '.$customerData['order_id'];
 
     $customer = $customerData['email'];
 

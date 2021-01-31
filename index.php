@@ -12,14 +12,16 @@
                 include 'src/template/shared/banner.php'; 
             ?>
         </header>
-        <!-- Service -->
-        <?php include 'src/template/section/service.html'; ?>
-        <!-- Localisation -->
-        <?php include 'src/template/section/map.php'; ?>
-        <!-- Contact -->
-        <?php include 'src/template/section/form_contact.php' ?>
-        <!-- Footer -->
-        <?php include 'src/template/shared/footer.php'; ?>
-        <?php include 'src/template/shared/button_whatsapp.php'; ?>
+        <?php 
+            // Service
+            include 'src/template/section/service.html'; 
+            // Localisation
+            include 'src/template/section/map.php';
+            // Contact
+            include 'src/template/section/form_contact.php';
+            // Footer
+            include 'src/template/shared/footer.php';
+            include 'src/template/shared/button_whatsapp.php'; 
+        ?>
     </body>
 </html>

@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="description" content="Pizza ouvert 7J/7, profitez d'une soirée en famillle ou entre amis pour déguster l'une des meilleure pizza de Marseille. Toutes nos commandes se font en livraison ou à emporter.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pizza Billy PHP</title>
+<title>Pizza Food Billy PHP</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" 
 integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" 
 crossorigin="anonymous" />
-<meta property="og:title" content="Pizza Billy">
+<meta property="og:title" content="Pizza Food">
 <meta property="og:description" content="Pizza ouvert 7J/7, profitez d'une soirée en famillle ou entre amis pour déguster l'une des meilleure pizza de Marseille. Toutes nos commandes se font en livraison ou à emporter.">
 <meta property="og:type" content="object">
 <meta property="og:url" content="https://techmindconsulting.github.io/pizza-website">
@@ -16,7 +16,7 @@ crossorigin="anonymous" />
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@SaidiAham">
 <meta name="twitter:creator" content="@SaidiAham">
-<meta name="twitter:title" content="Pizza Billy">
+<meta name="twitter:title" content="Pizza Food">
 <meta name="twitter:description" content="Pizza ouvert 7J/7, profitez d'une soirée en famillle ou entre amis pour déguster l'une des meilleure pizza de Marseille. Toutes nos commandes se font en livraison ou à emporter.">
 <meta name="twitter:image" content="assets/images/pizza-thumbnail.jpg">
 

@@ -1,5 +1,5 @@
 <div class="topbar">
-    <h1><a href="index.php">Pizza Billy</a></h1>
+    <h1><a href="index.php">Pizza Food</a></h1>
         <nav id="menu">
             <ul>
                 <li><a href="#service" 
