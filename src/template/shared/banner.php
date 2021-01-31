@@ -1,5 +1,5 @@
 <div class="banner">
-    <h2>Pizza Billy</h2>
+    <h2>Pizza Food</h2>
     <address><a href="tel:<?= WHATSAPP_API_PARAM_PHONE ?>"> <?= CONTACT_PHONE;  ?> </a></address>
     <p class="info">A emporter ou livraison</p>
     <p class="info">Pizzeria, ouvert de 

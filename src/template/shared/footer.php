@@ -2,7 +2,7 @@
   <footer id="footer" class="footer">
     <div class="container">
         <div>
-            <h3>Pizza Billy</h3>
+            <h3>Pizza Food</h3>
             <nav>
                 <ul>
                     <li><a href="index.php#header">Notre pizzeria</a></li>
@@ -27,7 +27,7 @@
             <a href="#" download="pdf/carte_pizza_billy_marseille_13005.pdf">Télécharger la carte pizza billy</a>
         </div>
     </div>
-    <p class="copyright">© Pizza Billy - Pizzeria <?= date('Y'); ?></p>
+    <p class="copyright">© Pizza Food - Pizzeria <?= date('Y'); ?></p>
 </footer>
 <script>
     if (null !== document.getElementById('flash-message')) {

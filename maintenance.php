@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pizza Billy - Mode Maintenance</title>
+        <title>Pizza Food - Mode Maintenance</title>
         <meta name="robots" content="none" />
     </head>
     <body>

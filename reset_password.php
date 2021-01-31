@@ -10,7 +10,7 @@ unset($_SESSION['auth']);
     <head>
         <?php 
             include 'src/template/shared/head.php'; 
-            $token = $_GET['token']?? null;
+            $token = $_GET['token'] ?? null;
 
             if (!empty($token)) {
                 $user = getUserBy('confirmation_token', $token);
@@ -21,18 +21,19 @@ unset($_SESSION['auth']);
                     die;
                 }
             }
-        
         ?>
     </head>
     <body>
-    <header id="header" class="header">
+        <header id="header" class="header">
+            <?php 
+                $currentPage = 'login'; 
+                include 'src/template/shared/menu.php'; 
+            ?>
+        </header>
         <?php 
-        $currentPage = 'login'; 
-        include 'src/template/shared/menu.php'; ?>
-    </header>
-    <?php 
-        include 'src/template/section/form_reset_password.php';
-    ?>
-    <?php include 'src/template/shared/footer.php'; ?>
-    <?php include 'src/template/shared/button_whatsapp.php'; ?>
+            include 'src/template/section/form_reset_password.php';
+            include 'src/template/shared/footer.php';
+            include 'src/template/shared/button_whatsapp.php'; 
+        ?>
+    </body>
 </html>

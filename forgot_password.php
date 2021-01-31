@@ -10,14 +10,16 @@ unset($_SESSION['auth']);
         <?php include 'src/template/shared/head.php'; ?>
     </head>
     <body>
-    <header id="header" class="header">
+        <header id="header" class="header">
+            <?php 
+                $currentPage = 'login'; 
+                include 'src/template/shared/menu.php'; 
+            ?>
+        </header>
         <?php 
-        $currentPage = 'login'; 
-        include 'src/template/shared/menu.php'; ?>
-    </header>
-    <?php 
-        include 'src/template/section/form_forgot_password.php';
-    ?>
-    <?php include 'src/template/shared/footer.php'; ?>
-    <?php include 'src/template/shared/button_whatsapp.php'; ?>
+            include 'src/template/section/form_forgot_password.php';
+            include 'src/template/shared/footer.php';
+            include 'src/template/shared/button_whatsapp.php'; 
+        ?>
+    </body>
 </html>
